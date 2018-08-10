@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'kaminari'
 gem 'kaminari-i18n', '~> 0.5.0'
 
+# Layout Gems
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

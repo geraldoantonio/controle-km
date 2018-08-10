@@ -15,7 +15,3 @@
 //= require turbolinks
 //= require_tree .
 
-
-//= require js/jquery-3.3.1.slim.min
-//= require js/popper.min
-//= require js/bootstrap.min
