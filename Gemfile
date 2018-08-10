@@ -69,6 +69,7 @@ group :test do
 end
 
 group :production do
+  #Postgres database
   gem 'pg'
 end
 

@@ -8,7 +8,7 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-
+  
 development:
   <<: *default
   database: db/development.sqlite3
@@ -21,15 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  
   adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  
   database: solutis-km_production
   username: solutis-km
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
-  
-  
+  password: <%= ENV['SOLUTIS-KM_DATABASE_PASSWORD'] %>
