@@ -1,0 +1,18 @@
+'pt-BR':
+  buttons:
+    new: Novo
+    save: Salvar
+    show: Exibir
+    edit: Editar
+    destroy: Apagar
+    delete: Apagar
+    cancel: Cancelar
+    back: Voltar
+    home: Início
+    close: Fechar
+    send: Enviar
+    send_message: Enviar Mensagem  
+    send_mail: Enviar Email
+    search: Pesquisar
+    view_details: Ver detalhes  
+    reset_filter: Limpar Filtros

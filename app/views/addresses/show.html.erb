@@ -1,0 +1,29 @@
+<h1 class="mt-5"><i class="fas fa-map-marker-alt"></i> Endereço: <%= @address.id %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= Address.human_attribute_name("description") %>: </strong>
+  <%= @address.description %>
+</p>
+
+<p>
+  <strong><%= Address.human_attribute_name("address") %>: </strong>
+  <%= @address.address %>
+</p>
+
+<p>
+  <strong><%= Address.human_attribute_name("city") %>:</strong>
+  <%= @address.city %> - <%= @address.uf %>
+</p>
+
+<p>
+  <strong><%= Address.human_attribute_name("cep") %>: </strong>
+  <%= @address.cep %>
+</p>
+
+<div class="form-group d-print-none ">
+  <%= link_to t('buttons.back'), addresses_path, class:"btn btn-success" %>
+  <%= link_to t('buttons.edit'), edit_address_path(@address), class:"btn btn-primary" %>
+</div>
+    

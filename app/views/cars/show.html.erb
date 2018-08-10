@@ -1,0 +1,32 @@
+<h1 class="mt-5"><i class="fas fa-car"></i><%= " #{Car.model_name.human}: #{@car.id} " %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= Car.human_attribute_name("plate")%>: </strong>
+  <%= @car.plate %>
+</p>
+
+<p>
+  <strong><%= Car.human_attribute_name("mark")%>: </strong>
+  <%= @car.mark %>
+</p>
+
+<p>
+  <strong><%= Car.human_attribute_name("modelType")%>: </strong>
+  <%= @car.modelType %>
+</p>
+
+<p>
+  <strong><%= Car.human_attribute_name("functionary_id")%>: </strong>
+  <%= link_to functionary_path(@car.functionary) do
+    @car.functionary.name
+  end %>
+</p>
+
+
+<div class="form-group d-print-none ">
+  <%= link_to t('buttons.back'), cars_path, class:"btn btn-success" %>
+  <%= link_to t('buttons.edit'), edit_car_path(@car), class:"btn btn-primary" %>
+</div>
+    

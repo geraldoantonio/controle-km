@@ -1,0 +1,44 @@
+<%= form_with(model: functionary, local: true) do |form| %>
+  <% if functionary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(functionary.errors.count, "error") %> prohibited this functionary from being saved:</h2>
+
+      <ul>
+      <% functionary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-12">
+      <%= form.label :name %>
+      <%= form.text_field :name, :class => "form-control"  %>
+    </div>
+</div>
+<div class="row">
+  
+    <div class="form-group col-md-4">
+      <%= form.label :matriculation %>
+      <%= form.text_field :matriculation, :class => "form-control"  %>
+    </div>
+
+
+    <div class="form-group col-md-4">
+      <%= form.label :function %>
+      <%= form.text_field :function, :class => "form-control"  %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :active %>
+      <%= form.check_box :active, :class => "form-control"  %>
+    </div>
+</div>
+
+  <div class="form-group">
+    <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-success" %>
+    <%= submit_tag t('buttons.save'),  class:"btn btn-primary" %>
+  </div>
+<% end %>

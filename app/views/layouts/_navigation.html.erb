@@ -1,0 +1,33 @@
+<!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top nav-menu  ">
+
+        <%= link_to root_path, :class => "navbar-brand mr-0 mr-md-2" do %>
+        
+           <%= image_tag("logo.png", height:"28" ) %>
+        <% end %>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto ">
+            <li class="nav-item">
+              <%= link_to "Rotas", displacements_path, :class => "nav-link " %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Endereços", addresses_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Carros", cars_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Funcionários", functionaries_path, :class => "nav-link" %>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">geraldo.junior </a></li>    
+              <li><a href="#"> <i class="fas fa-power-off"></i></a></li>
+           </ul>
+            
+        </div>
+      </nav>

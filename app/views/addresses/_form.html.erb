@@ -1,0 +1,51 @@
+<%= form_with(model: address, local: true) do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-8">
+      <%= form.label :description %>
+      <%= form.text_field :description, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <%= form.label :cep %>
+      <%= form.text_field :cep, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    
+  <div class="form-group col-md-8">
+    <%= form.label :address %>
+    <%= form.text_field :address, :class => "form-control" %>
+  </div>
+
+  <div class="form-group col-md-2">
+    <%= form.label :city %>
+    <%= form.text_field :city, :class => "form-control" %>
+  </div>
+
+  <div class="form-group col-md-2">
+    <%= form.label :uf %>
+    <%= form.text_field :uf, :class => "form-control" %>
+  </div>
+
+</div>
+
+
+  <div class="form-group">
+    <%= link_to t('buttons.back'), addresses_path, class:"btn btn-success" %>
+    <%= submit_tag t('buttons.save'),  class:"btn btn-primary" %>
+  </div>
+<% end %>

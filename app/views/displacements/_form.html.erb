@@ -1,0 +1,99 @@
+
+<%= form_with(model: displacement, local: true) do |form| %>
+  <% if displacement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(displacement.errors.count, "error") %> prohibited this displacement from being saved:</h2>
+
+      <ul>
+      <% displacement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4">
+      <%= form.label :car_id %>      
+     <% options = options_from_collection_for_select(@list_cars, 'id', :full_car, @displacement.car_id) %>
+     <%= form.select :car_id,   options, {}, {:class => "form-control"}  %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-8">
+     <%= form.label :functionary_id %>
+     <% options = options_from_collection_for_select(@list_functionaries, 'id', 'name', @displacement.functionary_id ) %>
+     <%= form.select :functionary_id,   options, {}, {:class => "form-control"}  %>
+    </div>
+  </div>
+
+  <div class=" form-row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4">
+      <%= form.label :dateDay %>
+      <%= form.date_select :dateDay,  {}, {:class => "form-control" }  %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-4">
+      <%= form.label :osNumber %>
+      <%= form.number_field :osNumber, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-4">
+      <%= form.label :osProject %>
+      <%= form.select :osProject, Displacement::osProjects.collect { |p| p[0] }, {}, {:class => "form-control", :selected => 1}  %>
+
+
+    </div>
+  
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-2">
+      <%= form.label :startHour %>
+      <%= form.time_field :startHour, :class => "form-control"  %>
+    </div>
+    
+    <div class="form-group col-xs-12 col-sm-12 col-md-2">
+      <%= form.label :kmStart %>
+      <%= form.number_field :kmStart, :class => "form-control" %>
+    </div>
+    
+  <div class="form-group col-xs-12 col-sm-12 col-md-8">
+    <%= form.label :addressSrc_id %>    
+    <% options = options_from_collection_for_select(@list_addressess, 'id', 'description', @displacement.addressSrc_id) %>
+    <%= form.select :addressSrc_id,   options, {}, {:class => "form-control"}  %>
+  </div>
+  </div>
+  <div class="form-row">
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-2">
+      <%= form.label :endHour %>
+      <%= form.time_field :endHour, :class => "form-control" %>
+    </div>
+  
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-2">
+      <%= form.label :kmEnd %>
+      <%= form.number_field :kmEnd, :class => "form-control" %>
+    </div>
+
+  <div class="form-group col-xs-12 col-sm-12 col-md-8">
+    <%= form.label :addressDst_id %>   
+    <% options = options_from_collection_for_select(@list_addressess, 'id', 'description', @displacement.addressDst_id) %>
+    <%= form.select :addressDst_id,   options, {}, {:class => "form-control"}  %>
+    
+  </div>
+ </div>
+
+  <div class="form-row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+      <%= form.label :annotation %>
+      <%= form.text_area :annotation, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= link_to t('buttons.back'), displacements_path, class:"btn btn-success" %>
+    <%= submit_tag t('buttons.save'),  class:"btn btn-primary" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Fonte Aewssome, https://fontawesome.com -->
+    <%= stylesheet_link_tag  "https://use.fontawesome.com/releases/v5.2.0/css/all.css", integrity: "sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ", crossorigin: "anonymous" %>
+    <%= javascript_include_tag  'https://use.fontawesome.com/releases/v5.2.0/js/all.js', integrity: "sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy", crossorigin: "anonymous" %>
+
+
+    <title>Solutis - Suporte N2 </title>
+
+  </head>
+
+  <body>
+
+    <header >
+      <!-- Menu -->
+      <%= render partial:"layouts/navigation" %>      
+    </header>
+    
+    <!-- Begin page content -->
+    <main role="main" class="container ">
+      <%= yield %> 
+    </main>
+
+   
+    
+    
+    <footer class="footer">      
+      <%= render partial:"layouts/footer" %> 
+    </footer>
+
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+

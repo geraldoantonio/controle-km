@@ -1,0 +1,75 @@
+<h1 class="mt-5"><i class="fas fa-location-arrow"></i><%= " #{Displacement.model_name.human}: #{@displacement.id} " %></h1>
+      
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("car_id") %>: </strong>
+  <%= link_to @displacement.full_car, car_path(@displacement.car) %> 
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("functionary_id") %></strong>
+  <%= link_to @displacement.functionary.name, functionary_path(@displacement.functionary) %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("dateDay") %>:</strong>
+  <%= l @displacement.dateDay%>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("osNumber") %></strong>
+  <%= @displacement.osNumber %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("osProject") %>:</strong>
+  <%= @displacement.osProject %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("startHour") %>:</strong>
+  <%= @displacement.startHour.strftime("%H:%M") unless @displacement.startHour.nil?   %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("endHour") %>:</strong>
+  <%= @displacement.endHour.strftime("%H:%M")  unless @displacement.endHour.nil?  %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("addressSrc") %>:</strong>
+  <%= link_to @displacement.full_address_src, address_path(@displacement.addressSrc) %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("addressDst") %>:</strong>
+  <%= link_to @displacement.full_address_dst, address_path(@displacement.addressDst) %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("kmStart") %>:</strong>
+  <%= @displacement.kmStart %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("kmEnd") %>:</strong>
+  <%= @displacement.kmEnd %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("kmCount") %>:</strong>
+  <%= @displacement.kmCount %>
+</p>
+
+<p>
+  <strong><%= Displacement.human_attribute_name("annotation") %>:</strong>
+  <%= @displacement.annotation %>
+</p>
+
+
+<div class="form-group d-print-none ">
+  <%= link_to t('buttons.back'), displacements_path, class:"btn btn-success" %>
+  <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-primary" %>
+</div>
+    
