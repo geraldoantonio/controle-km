@@ -1,7 +1,8 @@
 class DisplacementsController < ApplicationController
   before_action :set_displacement, only: [:show, :edit, :update, :destroy]
   before_action :lists_selects, only: [:edit, :update, :create, :new]
-
+  
+  
   # GET /displacements
   # GET /displacements.json
   def index

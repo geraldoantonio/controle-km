@@ -25,8 +25,11 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">geraldo.junior </a></li>    
-              <li><a href="#"> <i class="fas fa-power-off"></i></a></li>
+              <li><%= current_user.email %> </li> 
+              
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <i class="fas fa-power-off"></i>
+              <% end %>
            </ul>
             
         </div>

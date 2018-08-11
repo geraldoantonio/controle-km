@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
-  root :to => "displacements#index" #Default Page
+  root :to => "displacements#index" 
   
+  devise_for :users
+  
+  #root :to => "home#index"
+
   resources :displacements
   resources :cars
   resources :addresses

@@ -1,0 +1,26 @@
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form-signin text-center"})  do |f| %>
+      
+  <%= devise_error_messages! %>
+
+  <img class="mb-4" src="https://s3.amazonaws.com/gupy5/production/companies/167/images/logo.jpg" alt="" width="82" height="92">
+      <h1 class="h3 mb-3 font-weight-normal">Cadastrar!</h1>  
+
+      <%= f.label :email, class: 'sr-only' %>
+      <%= f.email_field :email, autofocus: true,  autocomplete: "email", class: "form-control", placeholder: "Endereço de Email", required: "required", autofocus: true %>
+
+      <%= f.label :password, class: 'sr-only' %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: "required" %>
+    
+      <%= f.label :password_confirmation, class: 'sr-only' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmar Senha", required: "required" %>
+ 
+
+    <%= submit_tag t('buttons.signin'),  class:"btn btn-lg btn-primary btn-block" %>
+
+      <p class="mt-5 mb-3 text-muted">
+        <%= render "devise/shared/links" %>
+      </p>
+
+<% end %>
+

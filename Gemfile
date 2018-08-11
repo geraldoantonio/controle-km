@@ -38,7 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'kaminari'
 gem 'kaminari-i18n', '~> 0.5.0'
 
-# Layout Gems
+# Flexible authentication solution for Rails with Warden. http://blog.plataformatec.com.br/tag/…
+gem 'devise'
 
 
 group :development, :test do

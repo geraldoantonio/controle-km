@@ -16,3 +16,7 @@
     search: Pesquisar
     view_details: Ver detalhes  
     reset_filter: Limpar Filtros
+    signin: Login
+    signup: Cadastrar
+    signout: Sair
+    password_reset: Recuperar Senha

@@ -17,6 +17,7 @@ module Workspace
     # the framework and any gems in your application.
     config.time_zone = 'Brasilia'
     config.i18n.default_locale = 'pt-BR'
+    config.assets.initialize_on_precompile = false
 
 
   end
