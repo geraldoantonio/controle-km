@@ -27,17 +27,17 @@
   
     <header >
       <!-- Menu -->
-      <%= render partial:"layouts/navigation" if user_signed_in? %>      
+      <%= user_signed_in? ? (render partial:"layouts/navigation")  : (render inline:'<br><br><br>')  %>
     </header>
     
     <!-- Begin page content -->
-    <main role="main" class="container "> 
+    <main role="main" class="container ">
+      
+      <%= yield %> 
+ 
       
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>  
-      
-      <%= yield %> 
-
     </main>
 
    
