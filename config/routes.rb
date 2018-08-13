@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   root :to => "displacements#index" 
   
-  devise_for :users
   
   #root :to => "home#index"
 
