@@ -40,7 +40,8 @@ gem 'kaminari-i18n', '~> 0.5.0'
 
 # Flexible authentication solution for Rails with Warden. http://blog.plataformatec.com.br/tag/…
 gem 'devise'
-
+# The authorization Gem for Ruby on Rails.
+gem 'cancancan', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
