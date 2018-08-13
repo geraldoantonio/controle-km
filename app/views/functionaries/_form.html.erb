@@ -27,8 +27,8 @@
 
 
     <div class="form-group col-md-4">
-      <%= form.label :function %>
-      <%= form.text_field :function, :class => "form-control"  %>
+      <%= form.label :function %>      
+      <%= form.select :function, Functionary::functions.collect { |p| p[0] }, {}, {:class => "form-control", :selected => 1}  %>
     </div>
 
     <div class="form-group col-md-4">
@@ -37,8 +37,26 @@
     </div>
 </div>
 
+  <div class="form-row">
+
+    <div class="form-group col-md-12">
+      <%= form.label :leader %>      
+      
+     <% options = options_from_collection_for_select(@list_functionaries, 'id', 'name', @functionary.leader ) %>
+     <%= form.select :leader,   options, {}, {:class => "form-control" }  %>
+    </div>
+</div>
   <div class="form-group">
     <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-success" %>
     <%= submit_tag t('buttons.save'),  class:"btn btn-primary" %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+

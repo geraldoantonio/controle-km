@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_032435) do
+ActiveRecord::Schema.define(version: 2018_08_13_144226) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "description"
     t.string "cep"
     t.string "address"
     t.string "city"
-    t.string "uf"
+    t.integer "uf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(version: 2018_08_13_032435) do
   create_table "functionaries", force: :cascade do |t|
     t.string "matriculation"
     t.string "name"
-    t.string "function"
+    t.integer "function"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "leader"
   end
 
   create_table "users", force: :cascade do |t|

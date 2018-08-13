@@ -64,6 +64,7 @@ pt-BR:
         matriculation: Matrícula
         function: Função
         active: Ativo
+        leader: Líder
         created_at: Criado em
         updated_at: Atualizado em
         

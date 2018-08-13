@@ -18,6 +18,11 @@
 </p>
 
 <p>
+  <strong><%= Functionary.human_attribute_name("leader") %>: </strong>
+  <%= @functionary.leader_name(@functionary.leader) %>
+</p>
+
+<p>
   <strong><%= Functionary.human_attribute_name("active") %>: </strong>
   <%= @functionary.active %>
 </p>

@@ -1,5 +1,6 @@
 class FunctionariesController < ApplicationController
   before_action :set_functionary, only: [:show, :edit, :update, :destroy]
+  before_action :lists_selects, only: [:edit, :update, :create, :new]
 
   # GET /functionaries
   # GET /functionaries.json
@@ -69,6 +70,13 @@ class FunctionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def functionary_params
-      params.require(:functionary).permit(:matriculation, :name, :function, :active)
+      params.require(:functionary).permit(:matriculation, :name, :function, :leader, :active)
     end
+  
+    def lists_selects
+       @list_functionaries = Functionary.all.order(:name)
+    end
+  
+  
+  
 end

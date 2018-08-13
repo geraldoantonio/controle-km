@@ -1,7 +1,6 @@
-# README
+# SOLUTIS - N2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema auxiliar para suporte dos Técnicos N2 - Solutis.
 
 Things you may want to cover:
 

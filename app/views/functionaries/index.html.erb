@@ -16,6 +16,7 @@
       <th scope="col"><%= Functionary.human_attribute_name("matriculation")%></th>
       <th scope="col"><%= Functionary.human_attribute_name("name")%></th>
       <th scope="col"><%= Functionary.human_attribute_name("function")%></th>
+      <th scope="col"><%= Functionary.human_attribute_name("leader")%></th>
       <th scope="col"><%= Functionary.human_attribute_name("active")%></th>
       <th scope="col" colspan="3"></th>
     </tr>
@@ -28,6 +29,7 @@
         <td><%= functionary.matriculation %></td>
         <td><%= functionary.name %></td>
         <td><%= functionary.function %></td>
+        <td><%= functionary.leader_name(functionary.leader) %></td>
         <td><%= render inline: functionary.active_icon(functionary.active) %></td>
         
        <td> 

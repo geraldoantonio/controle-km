@@ -38,7 +38,7 @@
 
   <div class="form-group col-md-2">
     <%= form.label :uf %>
-    <%= form.text_field :uf, :class => "form-control" %>
+      <%= form.select :uf, Address::ufs.collect { |p| p[0] }, {}, {:class => "form-control", :selected => 1}  %>
   </div>
 
 </div>
