@@ -1,14 +1,18 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
 
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+    <%= stylesheet_link_tag    'application', media: 'all' %>
  
      <!-- Font Aewsome -->
     <%= stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', {integrity: 'sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ', crossorigin:'anonymous'} %>   
@@ -47,7 +51,9 @@
     <footer class="footer">      
       <%= render partial:"layouts/footer" %> 
     </footer>
-    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.2.1.slim.min.js', {integrity:'sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin:'anonymous'} %>
+    
+    <%= javascript_include_tag 'application' %>
+    
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', {integrity:'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin:'anonymous'}%>
     <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', {integrity:'sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin:'anonymous'} %>
     

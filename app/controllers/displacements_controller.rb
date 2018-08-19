@@ -6,7 +6,29 @@ class DisplacementsController < ApplicationController
   # GET /displacements
   # GET /displacements.json
   def index
-    @displacements = Displacement.order(dateDay: :desc, startHour: :desc).page params[:page]
+    #@displacements = Displacement.order(dateDay: :desc, startHour: :desc).page params[:page]
+    @filterrific = initialize_filterrific(
+        Displacement,
+        params[:filterrific],
+        select_options: {
+          sorted_by: Displacement.options_for_sorted_by,
+        },
+        default_filter_params: {
+          with_dateDay_gte: Date.today,
+          with_dateDay_lt: Date.today,
+          sorted_by: 'dateDay_desc'
+        },
+        persistence_id: false,
+      ) or return
+
+      @displacements = @filterrific.find.page(params[:page])
+
+
+      rescue ActiveRecord::RecordNotFound => e
+        # There is an issue with the persisted param_set. Reset it.
+        puts "Had to reset filterrific params: #{ e.message }"
+        redirect_to(reset_filterrific_url(format: :html)) and return
+
   end
 
   # GET /displacements/1

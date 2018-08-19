@@ -8,13 +8,58 @@ class Displacement < ApplicationRecord
   validates :kmStart, presence: true
   validates :startHour, presence: true
   
-  validate :km_end_start
+  validate :km_end_start, :addressEqual
   
   
   before_save :set_km_count
   
   enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL  ]
   
+  filterrific(
+   default_filter_params: { sorted_by: 'dateDay_desc' },
+   available_filters: [
+     :sorted_by,      
+     :with_dateDay_gte,
+     :with_dateDay_lt,
+   ]
+  )
+ # define ActiveRecord scopes for
+ # :search_query, :sorted_by, :with_country_id, and :with_created_at_gte
+  
+  
+  scope :sorted_by, lambda { |sort_option|
+    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+    case sort_option.to_s      
+    when /^id_/
+      order("displacements.id #{ direction }")
+    when /^dateDay_/
+      order("displacements.dateDay #{ direction }","displacements.startHour desc")
+    else
+      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+    end
+  }
+  
+  scope :with_dateDay_gte,lambda { |reference_time|
+    where('displacements.dateDay >= ?', reference_time)
+  }
+
+  scope :with_dateDay_lt,lambda { |reference_time|
+    where('displacements.dateDay <= ?', reference_time)
+  }
+  
+ 
+  def self.options_for_sorted_by
+    [
+      ['Id', 'id_desc'],
+      ['Data', 'dateDay_desc']
+    ]
+  end
+  
+  def addressEqual    
+    if self.addressSrc == self.addressDst      
+      errors.add(:base, "Endereço de Origem não pode ser igual ao de Destino !")
+    end    
+  end
   
   def km_end_start    
     if km_end_less?      
@@ -47,6 +92,5 @@ class Displacement < ApplicationRecord
   def full_address_dst
     "(#{self.addressDst.description}) #{self.addressDst.address}, #{self.addressDst.city} - #{self.addressDst.uf}, #{self.addressDst.cep}"
   end
-    
-  
+ 
 end

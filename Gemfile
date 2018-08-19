@@ -43,6 +43,16 @@ gem 'devise'
 # The authorization Gem for Ruby on Rails.
 gem 'cancancan', '~> 2.0'
 
+# Filterrific is a Rails Engine plugin that makes it easy to filter, search, and sort your ActiveRecord lists.
+gem 'filterrific'
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+# jQuery UI for the Rails asset pipeline
+gem 'jquery-ui-rails'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
