@@ -33,7 +33,7 @@ class Displacement < ApplicationRecord
     when /^id_/
       order("displacements.id #{ direction }")
     when /^dateDay_/
-      order("displacements.dateDay #{ direction }","displacements.startHour desc")
+      order("displacements.\"dateDay\" #{ direction }","displacements.startHour desc")
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
