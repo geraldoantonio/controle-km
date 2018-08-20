@@ -40,11 +40,11 @@ class Displacement < ApplicationRecord
   }
   
   scope :with_dateDay_gte,lambda { |reference_time|
-    where('displacements.dateDay >= ?', reference_time)
+    where('displacements."dateDay" >= ?', reference_time)
   }
 
   scope :with_dateDay_lt,lambda { |reference_time|
-    where('displacements.dateDay <= ?', reference_time)
+    where('displacements."dateDay" <= ?', reference_time)
   }
   
  
