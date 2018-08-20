@@ -1,0 +1,33 @@
+<%- headers = [        
+        Displacement.human_attribute_name("dateDay"),
+        Displacement.human_attribute_name("osNumber"),
+        Displacement.human_attribute_name("osProject") ,
+        Displacement.human_attribute_name("startHour"),
+        Displacement.human_attribute_name("addressSrc"),
+        Displacement.human_attribute_name("kmStart"),
+        Displacement.human_attribute_name("addressDst"),
+        Displacement.human_attribute_name("kmEnd"),
+        Displacement.human_attribute_name("endHour"),
+        Displacement.human_attribute_name("kmCount"),
+        'litros consumidos',
+        'R$/km rodado',
+        Displacement.human_attribute_name("annotation")
+  ] -%>
+<%= CSV.generate_line headers, :col_sep => "|", row_sep: "\r\n",  encoding: "ISO8859-1" %>
+<%- @displacements_csv.each do |displacement| -%>  
+  <%= CSV.generate_line([
+            (l displacement.dateDay),
+            displacement.osNumber,
+            displacement.osProject,
+            (displacement.startHour.strftime("%H:%M") unless displacement.startHour.nil?),
+            displacement.full_address_src,
+            displacement.kmStart,
+            displacement.full_address_dst,
+            displacement.kmEnd,
+            (displacement.endHour.strftime("%H:%M") unless displacement.endHour.nil?),
+            displacement.kmCount,
+                       nil,
+                       nil,
+            (displacement.annotation )
+    ], row_sep: "\r\n", :col_sep => "|", :quote_char =>  " ",  encoding: "ISO8859-1") -%>
+<%- end -%>

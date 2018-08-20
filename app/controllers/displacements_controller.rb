@@ -7,6 +7,10 @@ class DisplacementsController < ApplicationController
   # GET /displacements.json
   def index
     #@displacements = Displacement.order(dateDay: :desc, startHour: :desc).page params[:page]
+    if  request.format == "csv"
+      @displacements_csv = Displacement.order(:dateDay, :startHour)
+    end
+    
     @filterrific = initialize_filterrific(
         Displacement,
         params[:filterrific],
@@ -28,6 +32,11 @@ class DisplacementsController < ApplicationController
         # There is an issue with the persisted param_set. Reset it.
         puts "Had to reset filterrific params: #{ e.message }"
         redirect_to(reset_filterrific_url(format: :html)) and return
+    
+    respond_to do |format|
+      format.html      
+      format.csv { render :csv => @displacements_csv}
+    end
 
   end
 
