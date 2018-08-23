@@ -1,5 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  before_action :lists_selects, only: [:edit, :update, :create, :new]
 
   # GET /cars
   # GET /cars.json
@@ -15,12 +16,10 @@ class CarsController < ApplicationController
   # GET /cars/new
   def new
     @car = Car.new
-    @list_functionaries = Functionary.all
   end
 
   # GET /cars/1/edit
   def edit
-    @list_functionaries = Functionary.all
   end
 
   # POST /cars
@@ -73,4 +72,9 @@ class CarsController < ApplicationController
     def car_params
       params.require(:car).permit(:plate, :mark, :modelType, :functionary_id)
     end
+      
+    def lists_selects
+        @list_functionaries = Functionary.all.order(:name)
+    end
+  
 end
