@@ -3,6 +3,10 @@ class Address < ApplicationRecord
 
  # accepts_nested_attributes_for :displacements
 
+  validates :description, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :uf, presence: true
  
   enum uf: [   
     :AC, :AL, :AM, :AP, :BA, :CE, :DF, :ES,

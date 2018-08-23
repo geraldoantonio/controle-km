@@ -4,9 +4,16 @@ class Displacement < ApplicationRecord
   belongs_to :addressSrc, class_name: "Address"
   belongs_to :addressDst, class_name: "Address"
   
-  
-  validates :kmStart, presence: true
+  validates :car_id, presence: true
+  validates :functionary_id, presence: true
+  validates :dateDay, presence: true
+  validates :osNumber, presence: true  
+  validates :osProject, presence: true
   validates :startHour, presence: true
+  validates :addressSrc_id, presence: true  
+  validates :addressDst_id, presence: true
+  validates :kmStart, presence: true
+
   
   validate :km_end_start, :addressEqual
   

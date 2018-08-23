@@ -3,6 +3,9 @@ class Functionary < ApplicationRecord
   accepts_nested_attributes_for :cars
   
   validates :name, presence: true
+  validates :matriculation, presence: true
+  validates :function, presence: true
+  
   
   enum function: [ :'Gerente de Projeto', :'Supervisor', :'Líder', :'Técnico em Informática'  ]
   
