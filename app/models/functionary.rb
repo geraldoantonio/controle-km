@@ -2,6 +2,8 @@ class Functionary < ApplicationRecord
   has_many :cars
   accepts_nested_attributes_for :cars
   
+  validates :name, presence: true
+  
   enum function: [ :'Gerente de Projeto', :'Supervisor', :'Líder', :'Técnico em Informática'  ]
   
   def leader_name(functionary)

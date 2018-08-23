@@ -4,6 +4,7 @@
     save: Salvar
     show: Exibir
     edit: Editar
+    update: Atualizar
     destroy: Apagar
     delete: Apagar
     cancel: Cancelar
@@ -16,7 +17,8 @@
     search: Pesquisar
     view_details: Ver detalhes  
     reset_filter: Limpar Filtros
-    signin: Login
+    signin: Entrar
     signup: Cadastrar
     signout: Sair
-    password_reset: Recuperar Senha
+    password_reset: Recuperar
+    remember_me: Manter logado

@@ -1,7 +1,5 @@
-<h1 class="mt-5"><i class="fas fa-location-arrow"></i><%= " #{Displacement.model_name.human}: #{@displacement.id} " %></h1>
-      
-<p id="notice"><%= notice %></p>
-
+<h1 ><i class="fas fa-location-arrow"></i><%= " #{Displacement.model_name.human}: #{@displacement.id} " %></h1>
+  
 <p>
   <strong><%= Displacement.human_attribute_name("car_id") %>: </strong>
   <%= link_to @displacement.full_car, car_path(@displacement.car) %> 

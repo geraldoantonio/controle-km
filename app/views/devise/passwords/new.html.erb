@@ -1,18 +1,19 @@
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), :html => {method: :post, :class => "form-signin text-center"})  do |f| %>
-      
-  <%= devise_error_messages! %>
 
   <img class="mb-4" src="https://s3.amazonaws.com/gupy5/production/companies/167/images/logo.jpg" alt="" width="82" height="92">
       <h1 class="h3 mb-3 font-weight-normal">Esqueceu sua senha?</h1>  
 
+    <div class="form-group">
       <%= f.label :email, class: 'sr-only' %>
       <%= f.email_field :email, autofocus: true,  autocomplete: "email", class: "form-control", placeholder: "Endereço de Email", required: "required", autofocus: true %>
+    </div>
 
+    <div class="form-group">
+        <%= submit_tag t('buttons.password_reset'),  class:"btn btn-lg btn-primary btn-block" %>
+    </div>
 
-    <%= submit_tag t('buttons.password_reset'),  class:"btn btn-lg btn-primary btn-block" %>
-
-      <p class="mt-5 mb-3 text-muted">
+      <p class="form-group text-muted">
         <%= render "devise/shared/links" %>
       </p>
 

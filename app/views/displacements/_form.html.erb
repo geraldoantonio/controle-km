@@ -1,15 +1,9 @@
 
 <%= form_with(model: displacement, local: true) do |form| %>
   <% if displacement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(displacement.errors.count, "error") %> prohibited this displacement from being saved:</h2>
-
-      <ul>
-      <% displacement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <% displacement.errors.full_messages.each do |message| %>
+        <%= javascript_tag  "toastr['error']('#{message}')"  %>
       <% end %>
-      </ul>
-    </div>
   <% end %>
 
   <div class="form-row">

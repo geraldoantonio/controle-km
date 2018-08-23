@@ -1,12 +1,9 @@
-<h1 class="mt-5"><i class="fas fa-location-arrow"></i> <%= Displacement.model_name.human count: 2 %></h1>
+<h1><i class="fas fa-location-arrow"></i> <%= Displacement.model_name.human count: 2 %></h1>
 
 <%= link_to new_displacement_path do %>
       <span class="pull-left"><i class="far fa-lg fa-plus-square"></i> <%= t('buttons.new') << ' ' << Displacement.model_name.human
  %> </span>
 <% end %>
-
-      
-<p id="notice"><%= notice %></p>
 
 <%= form_for_filterrific @filterrific do |f| %>
 

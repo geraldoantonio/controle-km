@@ -1,18 +1,30 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "form-signin text-center"})  do |f| %>
       <img class="mb-4" src="https://s3.amazonaws.com/gupy5/production/companies/167/images/logo.jpg" alt="" width="82" height="92">
-      <h1 class="h3 mb-3 font-weight-normal">Por favor, autenticar!</h1>  
+      <h1 class="h3 mb-3 font-weight-normal">Gestão de KM - Solutis</h1>  
+      
+      <p> Forneça suas credenciais para entrar</p>
+    
+    <div class="input-group mb-3">
+      <%= f.label :email, class: 'sr-only' %>      
+      <%= f.email_field :email, {autofocus: true,  autocomplete: "email", class: "form-control ", placeholder: "Usuário", required: "required", autofocus: true} %>   
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="fas fa-user"></i></span>
+      </div>
+    </div>
 
-      <%= f.label :email, class: 'sr-only' %>
-      <%= f.email_field :email, autofocus: true,  autocomplete: "email", class: "form-control", placeholder: "Endereço de Email", required: "required", autofocus: true %>
-
+    <div class="input-group mb-3">
       <%= f.label :password, class: 'sr-only' %>
       <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: "required" %>
-  </div>
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+      </div>
+    </div>
+
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="field text-left">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label t('buttons.remember_me') %>
     </div>
   <% end -%>
 

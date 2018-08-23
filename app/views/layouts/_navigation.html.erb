@@ -25,11 +25,17 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li><%= current_user.email %> </li> 
-              
-              <%= link_to destroy_user_session_path, :method => :delete do %>
-                <i class="fas fa-power-off"></i>
-              <% end %>
+              <li><%= current_user.email %> </li>
+              <li>
+                <%= link_to '#' do %>
+                  <i class="fas fa-cog"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %>
+                  <i class="fas fa-power-off"></i>
+                <% end %>
+              </li>
            </ul>
             
         </div>
