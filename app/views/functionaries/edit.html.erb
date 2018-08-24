@@ -1,3 +1,8 @@
-<h1><i class="fas fa-users"></i><%= " Editar #{Functionary.model_name.human}: #{@functionary.id} " %></h1>
+<div class="m-b-4">
+  <h1 ><i class="fas  fa-users"></i>
+    <%= " #{t('buttons.edit')} #{Functionary.model_name.human count: 1} " %>     
+    <span class="badge badge-info " > <%= @functionary.id %></span>
+  </h1>
+</div>
 
 <%= render 'form', functionary: @functionary %>

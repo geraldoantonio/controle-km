@@ -1,5 +1,9 @@
-<h1 ><i class="fas fa-users"></i><%= " #{Functionary.model_name.human}: #{@functionary.id} " %></h1>
-
+<div class="m-b-4">
+  <h1 ><i class="fas fa-users"></i>
+    <%= " #{Functionary.model_name.human count: 1} " %>     
+    <span class="badge badge-info " > <%= @functionary.id %></span>
+  </h1>
+</div>
 
 <p>
   <strong><%= Functionary.human_attribute_name("matriculation") %>: </strong>
@@ -23,8 +27,9 @@
 
 <p>
   <strong><%= Functionary.human_attribute_name("active") %>: </strong>
-  <%= @functionary.active %>
+  <%= render inline: @functionary.active_icon(@functionary.active) %>
 </p>
+
 
 <div class="form-group d-print-none ">
   <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-success" %>

@@ -1,4 +1,9 @@
-<h1><i class="fas fa-map-marker-alt"></i> Endereço: <%= @address.id %></h1>
+<div class="m-b-4">
+  <h1 ><i class="fas fa-map-marker-alt"></i>
+    <%= " #{Address.model_name.human count: 1} " %>     
+    <span class="badge badge-info " > <%= @address.id %></span>
+  </h1>
+</div>
 
 <p>
   <strong><%= Address.human_attribute_name("description") %>: </strong>

@@ -1,4 +1,4 @@
-<h1><i class="fas fa-map-marker-alt"></i> Novo Endereço</h1>
+<h1><i class="fas fa-map-marker-alt"></i> <%= " #{t('buttons.new')} #{Address.model_name.human count: 1} "%></h1>
 
 <%= render 'form', address: @address %>
 

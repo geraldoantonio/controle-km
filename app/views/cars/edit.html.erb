@@ -1,3 +1,8 @@
-<h1 ><i class="fas fa-car"></i><%= " Editar #{Car.model_name.human}: #{@car.id} " %></h1>
+<div class="m-b-4">
+  <h1 ><i class="fas fa-car"></i>
+    <%= " #{t('buttons.edit')} #{Car.model_name.human count: 1} " %>     
+    <span class="badge badge-info " > <%= @car.id %></span>
+  </h1>
+</div>
 
 <%= render 'form', car: @car %>
