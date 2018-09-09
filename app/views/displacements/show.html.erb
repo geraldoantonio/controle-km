@@ -6,27 +6,27 @@
 </p>
 
 <p>
-  <strong><%= Displacement.human_attribute_name("functionary_id") %></strong>
+  <strong><%= Displacement.human_attribute_name("functionary_id") %>: </strong>
   <%= link_to @displacement.functionary.name, functionary_path(@displacement.functionary) %>
 </p>
 
 <p>
-  <strong><%= Displacement.human_attribute_name("dateDay") %>:</strong>
+  <strong><%= Displacement.human_attribute_name("dateDay") %>: </strong>
   <%= l @displacement.dateDay%>
 </p>
 
 <p>
-  <strong><%= Displacement.human_attribute_name("osNumber") %></strong>
+  <strong><%= Displacement.human_attribute_name("osNumber") %>: </strong>
   <%= @displacement.osNumber %>
 </p>
 
 <p>
-  <strong><%= Displacement.human_attribute_name("osProject") %>:</strong>
+  <strong><%= Displacement.human_attribute_name("osProject") %>: </strong>
   <%= @displacement.osProject %>
 </p>
 
 <p>
-  <strong><%= Displacement.human_attribute_name("startHour") %>:</strong>
+  <strong><%= Displacement.human_attribute_name("startHour") %>: </strong>
   <%= @displacement.startHour.strftime("%H:%M") unless @displacement.startHour.nil?   %>
 </p>
 

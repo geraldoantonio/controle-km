@@ -10,10 +10,8 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col"><%= Address.human_attribute_name("description") %> </th>
-      <th scope="col"><%= Address.human_attribute_name("address") %> </th>
       <th scope="col"><%= Address.human_attribute_name("city") %> </th>
       <th scope="col"><%= Address.human_attribute_name("uf") %> </th>
-      <th scope="col"><%= Address.human_attribute_name("cep") %> </th>
       <th scope="col" colspan="3"></th>
     </tr>
   </thead>
@@ -23,10 +21,8 @@
       <tr>
         <td  scope="row"><%= address.id %></td>
         <td><%= address.description %></td>
-        <td><%= address.address %></td>
         <td><%= address.city %></td>
         <td><%= address.uf %></td>
-        <td><%= address.cep %></td>
         
        <td> 
          <%= link_to address do %>

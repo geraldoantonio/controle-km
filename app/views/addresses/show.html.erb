@@ -5,6 +5,31 @@
   </h1>
 </div>
 
+<%= javascript_tag("
+    function initMap() {   
+      
+    // Exibir mapa;
+      var myLatlng = new google.maps.LatLng( #{@address.geolocalization} );
+      var mapOptions = {
+      zoom: 19,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    // Exibir o mapa na div #mapa;
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    }
+
+  ")
+%>
+
+<div id="map" style="width:400px;height:400px; margin:20px 0"></div>
+
+<p>
+  <strong><%= Address.human_attribute_name("geolocalization") %>: </strong>
+  <%= @address.geolocalization %>
+</p>
 <p>
   <strong><%= Address.human_attribute_name("description") %>: </strong>
   <%= @address.description %>

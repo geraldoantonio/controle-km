@@ -47,6 +47,7 @@ pt-BR:
         address: Endereço
         city: Cidade
         uf: UF
+        geolocalization: Geolocalização
         description: Local
         created_at: Criado em
         updated_at: Atualizado em

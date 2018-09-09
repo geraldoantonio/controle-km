@@ -17,12 +17,8 @@
         <th scope="col"><%= Displacement.human_attribute_name("osProject" )%></th>
         <th scope="col"><%= Displacement.human_attribute_name("startHour") %></th>
         <th scope="col"><%= Displacement.human_attribute_name("addressSrc") %></th>
-        <th scope="col"><%= Displacement.human_attribute_name("kmStart") %></th>
         <th scope="col"><%= Displacement.human_attribute_name("addressDst") %></th>
-        <th scope="col"><%= Displacement.human_attribute_name("kmEnd") %></th>
         <th scope="col"><%= Displacement.human_attribute_name("endHour") %></th>
-        <th scope="col"><%= Displacement.human_attribute_name("kmCount") %></th>
-        <th scope="col"><%= Displacement.human_attribute_name("annotation") %></th>
         <th scope="col" colspan="3"></th>
       </tr>
     </thead>
@@ -36,12 +32,8 @@
           <td><%= displacement.osProject %></td>
           <td><%= displacement.startHour.strftime("%H:%M") unless displacement.startHour.nil?  %></td>
           <td><%= displacement.full_address_src %></td>
-          <td><%= displacement.kmStart %></td>
           <td><%= displacement.full_address_dst %></td>
-          <td><%= displacement.kmEnd %></td>
           <td><%= displacement.endHour.strftime("%H:%M")  unless displacement.endHour.nil? %></td>
-          <td><%= displacement.kmCount %></td>
-          <td><%= displacement.annotation %></td>
 
 
          <td> 

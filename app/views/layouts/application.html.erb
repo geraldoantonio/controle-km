@@ -6,9 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-  
+    <meta name="description" content="Controle de KM para veículos terceirizados">
+    <meta name="author" content="Solutis Tecnologias">
+    <meta name="theme-color" content="#333">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+    <meta name="msapplication-navbutton-color" content="#333">
+          
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   
@@ -20,7 +23,7 @@
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', {integrity:'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin:'anonymous'} %>
     <!-- Toastr -->
     <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css' %>   
-
+    
   
     <!-- Custom -->
     <%= javascript_include_tag 'application' %>
@@ -32,7 +35,6 @@
        <!-- Toastr -->
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js' %>
 
-    
     
   <title>Solutis - Suporte N2 </title>
 
@@ -52,7 +54,12 @@
     </footer>    
              
     <%= render partial: 'layouts/notifications' %>
+    
+  <!-- Maps Google -->
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCc3DRPBdnbWHnQntlvTZE_64_ZsToksZk&callback=initMap', {:async => 'async', :defer => 'defer'} %>
+ 
   </body>
+  
   
 </html>
 
