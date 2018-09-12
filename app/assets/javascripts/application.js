@@ -15,3 +15,11 @@
 //= require jquery_ujs
 //= require_tree .
 //= require filterrific/filterrific-jquery
+
+
+jQuery(document).ready(function($) {
+      $(".clickable-row").click(function() {
+          window.location = $(this).data("href");
+      });
+  });
+   

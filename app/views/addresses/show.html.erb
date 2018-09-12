@@ -8,23 +8,24 @@
 <%= javascript_tag("
     function initMap() {   
       
-    // Exibir mapa;
-      var myLatlng = new google.maps.LatLng( #{@address.geolocalization} );
-      var mapOptions = {
-      zoom: 19,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+     var myLatLng = new google.maps.LatLng(#{@address.geolocalization}) ;
 
-    // Exibir o mapa na div #mapa;
-      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 19,
+          center: myLatLng
+        });
 
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: '#{@address.full_address}'
+        });
     }
 
   ")
 %>
 
-<div id="map" style="width:400px;height:400px; margin:20px 0"></div>
+<div id="map" style="width:320px;height:320px; margin:20px 0"></div>
 
 <p>
   <strong><%= Address.human_attribute_name("geolocalization") %>: </strong>
@@ -53,5 +54,6 @@
 <div class="form-group d-print-none ">
   <%= link_to t('buttons.back'), addresses_path, class:"btn btn-success" %>
   <%= link_to t('buttons.edit'), edit_address_path(@address), class:"btn btn-primary" %>
+  <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
 </div>
     

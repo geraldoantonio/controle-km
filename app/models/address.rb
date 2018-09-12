@@ -15,4 +15,7 @@ class Address < ApplicationRecord
     :SE, :SP, :TO
    ]
   
+  def full_address
+    "(#{self.description}) #{self.address}, #{self.city} - #{self.uf}, #{self.cep}"
+  end  
 end

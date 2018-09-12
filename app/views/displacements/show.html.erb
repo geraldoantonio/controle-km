@@ -1,73 +1,117 @@
 <h1 ><i class="fas fa-location-arrow"></i><%= " #{Displacement.model_name.human}: #{@displacement.id} " %></h1>
   
-<p>
-  <strong><%= Displacement.human_attribute_name("car_id") %>: </strong>
-  <%= link_to @displacement.full_car, car_path(@displacement.car) %> 
-</p>
+  <div class="row">
+    <div class="col-md-8">      
 
-<p>
-  <strong><%= Displacement.human_attribute_name("functionary_id") %>: </strong>
-  <%= link_to @displacement.functionary.name, functionary_path(@displacement.functionary) %>
-</p>
+      <%= javascript_tag("
+          function initMap() {
+            var directionsService = new google.maps.DirectionsService();
+            var directionsDisplay = new google.maps.DirectionsRenderer();
+            var haight = new google.maps.LatLng( #{@displacement.addressSrc.geolocalization} );
+            var oceanBeach = new google.maps.LatLng( #{@displacement.addressDst.geolocalization} );
+            var mapOptions = {
+              zoom: 14,
+              center: haight
+            }
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            directionsDisplay.setMap(map);
+          }
 
-<p>
-  <strong><%= Displacement.human_attribute_name("dateDay") %>: </strong>
-  <%= l @displacement.dateDay%>
-</p>
+          function calcRoute() {
+            var selectedMode = document.getElementById('mode').value;
+            var request = {
+                origin: haight,
+                destination: oceanBeach,
+                // Note that Javascript allows us to access the constant
+                // using square brackets and a string value as its
+                // 'property.'
+                travelMode: google.maps.TravelMode[selectedMode]
+            };
+            directionsService.route(request, function(response, status) {
+              if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+              }
+            });
+          }
+        ")
+      %>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("osNumber") %>: </strong>
-  <%= @displacement.osNumber %>
-</p>
+      <div id="map" style="width:100%;min-height:80%"></div>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("osProject") %>: </strong>
-  <%= @displacement.osProject %>
-</p>
+    </div> 
+    <div class="col-md-4">      
+        <p>
+          <strong><%= Displacement.human_attribute_name("car_id") %>: </strong>
+          <%= link_to @displacement.full_car, car_path(@displacement.car) %> 
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("startHour") %>: </strong>
-  <%= @displacement.startHour.strftime("%H:%M") unless @displacement.startHour.nil?   %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("functionary_id") %>: </strong>
+          <%= link_to @displacement.functionary.name, functionary_path(@displacement.functionary) %>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("endHour") %>:</strong>
-  <%= @displacement.endHour.strftime("%H:%M")  unless @displacement.endHour.nil?  %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("dateDay") %>: </strong>
+          <%= l @displacement.dateDay%>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("addressSrc") %>:</strong>
-  <%= link_to @displacement.full_address_src, address_path(@displacement.addressSrc) %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("osNumber") %>: </strong>
+          <%= @displacement.osNumber %>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("addressDst") %>:</strong>
-  <%= link_to @displacement.full_address_dst, address_path(@displacement.addressDst) %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("osProject") %>: </strong>
+          <%= @displacement.osProject %>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("kmStart") %>:</strong>
-  <%= @displacement.kmStart %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("startHour") %>: </strong>
+          <%= @displacement.startHour.strftime("%H:%M") unless @displacement.startHour.nil?   %>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("kmEnd") %>:</strong>
-  <%= @displacement.kmEnd %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("endHour") %>:</strong>
+          <%= @displacement.endHour.strftime("%H:%M")  unless @displacement.endHour.nil?  %>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("kmCount") %>:</strong>
-  <%= @displacement.kmCount %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("addressSrc") %>:</strong>
+          <%= link_to @displacement.full_address_src, address_path(@displacement.addressSrc) %>
+        </p>
 
-<p>
-  <strong><%= Displacement.human_attribute_name("annotation") %>:</strong>
-  <%= @displacement.annotation %>
-</p>
+        <p>
+          <strong><%= Displacement.human_attribute_name("addressDst") %>:</strong>
+          <%= link_to @displacement.full_address_dst, address_path(@displacement.addressDst) %>
+        </p>
+
+        <p>
+          <strong><%= Displacement.human_attribute_name("kmStart") %>:</strong>
+          <%= @displacement.kmStart %>
+        </p>
+
+        <p>
+          <strong><%= Displacement.human_attribute_name("kmEnd") %>:</strong>
+          <%= @displacement.kmEnd %>
+        </p>
+
+        <p>
+          <strong><%= Displacement.human_attribute_name("kmCount") %>:</strong>
+          <%= @displacement.kmCount %>
+        </p>
+
+        <p>
+          <strong><%= Displacement.human_attribute_name("annotation") %>:</strong>
+          <%= @displacement.annotation %>
+        </p>
+
+    </div>
+  </div>
 
 
-<div class="form-group d-print-none ">
+<div class="form-group d-print-none text-center ">
   <%= link_to t('buttons.back'), displacements_path, class:"btn btn-success" %>
   <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-primary" %>
+  <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
 </div>
-    
+

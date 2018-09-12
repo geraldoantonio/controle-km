@@ -31,5 +31,6 @@
 <div class="form-group d-print-none ">
   <%= link_to t('buttons.back'), cars_path, class:"btn btn-success" %>
   <%= link_to t('buttons.edit'), edit_car_path(@car), class:"btn btn-primary" %>
+  <%= link_to t('buttons.delete'), car_path(@car), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
 </div>
     
