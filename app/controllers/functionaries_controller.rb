@@ -1,11 +1,13 @@
 class FunctionariesController < ApplicationController
   before_action :set_functionary, only: [:show, :edit, :update, :destroy]
-  before_action :lists_selects, only: [:edit, :update, :create, :new]
+  before_action :lists_selects, only: [:edit, :create, :new, :update]
+  
 
+  #Ex:- :default =>''
   # GET /functionaries
   # GET /functionaries.json
   def index
-    @functionaries = Functionary.page params[:page]
+    @functionaries = Functionary.where("leader = ? or id = ? ", current_user.functionary, current_user.functionary).page params[:page]
   end
 
   # GET /functionaries/1
@@ -16,6 +18,7 @@ class FunctionariesController < ApplicationController
   # GET /functionaries/new
   def new
     @functionary = Functionary.new
+    @functionary.build_user
   end
 
   # GET /functionaries/1/edit
@@ -26,7 +29,6 @@ class FunctionariesController < ApplicationController
   # POST /functionaries.json
   def create
     @functionary = Functionary.new(functionary_params)
-
     respond_to do |format|
       if @functionary.save
         format.html { redirect_to @functionary, notice: 'Functionary was successfully created.' }
@@ -66,17 +68,20 @@ class FunctionariesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_functionary
       @functionary = Functionary.find(params[:id])
+      #find_by(:user => current_user)
     end
 
+    def lists_selects
+      @list_leaders = Functionary.where(function:  :leader).order(:name).select(:id, :name)
+    end
+ 
     # Never trust parameters from the scary internet, only allow the white list through.
     def functionary_params
-      params.require(:functionary).permit(:matriculation, :name, :function, :leader, :active)
+      params.require(:functionary).permit(
+        :matriculation, :name, :function, :active, :leader, 
+        :user_attributes => [:id, :email, :password, :password_confirmation]
+      )  
     end
-  
-    def lists_selects
-       @list_functionaries = Functionary.all.order(:name)
-    end
-  
-  
+
   
 end

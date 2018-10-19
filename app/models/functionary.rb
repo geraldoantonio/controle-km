@@ -1,16 +1,16 @@
 class Functionary < ApplicationRecord
+
   has_many :cars
-  accepts_nested_attributes_for :cars
+  belongs_to :user, inverse_of: :functionary, optional: true
+  accepts_nested_attributes_for :user, reject_if: :all_blank
   
-  validates :name, presence: true
-  validates :matriculation, presence: true
-  validates :function, presence: true
-  
-  
-  enum function: [ :'Gerente de Projeto', :'Supervisor', :'Líder', :'Técnico em Informática'  ]
+  validates :name, :matriculation, :function, 
+            :leader,  presence: true
+
+  enum function: [ :leader, :tecnical  ]
   
   def leader_name(functionary)
-    Functionary.find(functionary).name
+    Functionary.find(functionary).name 
   end
   
   def active_icon(active)
@@ -20,5 +20,6 @@ class Functionary < ApplicationRecord
       "<i class=\"fas fa-lg fa-toggle-off\"></i>"
     end
   end
-  
+
+
 end

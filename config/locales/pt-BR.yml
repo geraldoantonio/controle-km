@@ -64,12 +64,19 @@ pt-BR:
         name: Nome
         matriculation: Matrícula
         function: Função
+        leader: Líder
+        tecnical: Técnico
         active: Ativo
         leader: Líder
         created_at: Criado em
         updated_at: Atualizado em
-        
-        
+      user:
+        password: Senha
+        password_confirmation: Confirmar Senha
+
+
+
+
   date:
     abbr_day_names:
     - Dom

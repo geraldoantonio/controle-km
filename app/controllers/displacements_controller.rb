@@ -107,7 +107,7 @@ class DisplacementsController < ApplicationController
     
     def lists_selects
         @list_addressess = Address.all.order(:description)
-        @list_functionaries = Functionary.all.order(:name)
+        @list_functionaries = Functionary.where(leader: current_user.functionary).order(:name)
         @list_cars = Car.all
     end
 end

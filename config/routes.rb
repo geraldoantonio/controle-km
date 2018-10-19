@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   
-  
-  devise_for :admins, path: 'admins'
-  devise_for :users, path: 'users'
-  
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations'
+  }
   root :to => "displacements#index" 
-  
-  
-  #root :to => "home#index"
 
   resources :displacements
   resources :cars

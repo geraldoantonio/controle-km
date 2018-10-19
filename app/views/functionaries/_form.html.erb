@@ -1,50 +1,63 @@
 <%= form_with(model: functionary, local: true) do |form| %>
 
   <% if functionary.errors.any? 
-      functionary.errors.full_messages.each do |message| %>
-        <%= javascript_tag  "toastr['error']('#{message}')"  %>
-      <% end 
-  end %>
+    functionary.errors.full_messages.each do |message| %>
+      <%= javascript_tag  "toastr['error']('#{message}')"  %>
+    <%end%>
+  <%end%>
 
   <div class="form-row">
-
     <div class="form-group col-md-12">
       <%= form.label :name %>
       <%= form.text_field :name, :class => "form-control"  %>
     </div>
-</div>
-<div class="row">
-  
+  </div>
+
+  <div class="row">
     <div class="form-group col-md-4">
       <%= form.label :matriculation %>
       <%= form.text_field :matriculation, :class => "form-control"  %>
     </div>
-
-
     <div class="form-group col-md-4">
       <%= form.label :function %>      
-      <%= form.select :function, Functionary::functions.collect { |p| p[0] }, {}, {:class => "form-control", :selected => 1}  %>
+      <%= form.select :function, Functionary::functions.collect { |key| [Functionary.human_attribute_name(key[0]), key[0]] }, {}, {:class => "form-control", :selected => 1}  %>
     </div>
-
     <div class="form-group col-md-4">
       <%= form.label :active %>
       <%= form.check_box :active, :class => "form-control"  %>
     </div>
-</div>
+  </div>
 
   <div class="form-row">
-
     <div class="form-group col-md-12">
-      <%= form.label :leader %>      
-      
-     <% options = options_from_collection_for_select(@list_functionaries, 'id', 'name', @functionary.leader ) %>
-     <%= form.select :leader,   options, {}, {:class => "form-control" }  %>
+      <%= form.label :leader %>   
+      <% options = options_from_collection_for_select(@list_leaders, 'id', 'name', @functionary.leader ) %>
+      <%= form.select :leader,   options, {}, {:class => "form-control" }  %>
     </div>
-</div>
+  </div>
+
+  <div class="row">
+    <%= form.fields_for :user do |u| %>
+      <div class="form-group col-md-4">
+          <%= u.label :email %>
+          <%= u.email_field :email,  autocomplete: "email", class: "form-control", placeholder: "Endereço de Email", required: "required" %>
+      </div>
+      <div class="form-group col-md-4">
+        <%= u.label :password %>
+        <%= u.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: "required" %>
+      </div>
+      <div class="form-group col-md-4">
+        <%= u.label :password_confirmation %>
+        <%= u.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmar Senha",required: "required" %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="form-group">
     <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-success" %>
     <%= submit_tag t('buttons.save'),  class:"btn btn-primary" %>
   </div>
+  
 <% end %>
 
 

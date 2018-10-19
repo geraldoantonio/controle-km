@@ -17,7 +17,7 @@
 
 <p>
   <strong><%= Functionary.human_attribute_name("function") %>: </strong>
-  <%= @functionary.function %>
+  <%= Functionary.human_attribute_name(@functionary.function) %>
 </p>
 
 <p>
@@ -26,10 +26,38 @@
 </p>
 
 <p>
+  <strong><%= Functionary.human_attribute_name("email") %>: </strong>
+  <%= @functionary.user.email %>
+</p>
+
+<p>
   <strong><%= Functionary.human_attribute_name("active") %>: </strong>
   <%= render inline: @functionary.active_icon(@functionary.active) %>
 </p>
 
+
+<div  class="table-striped table-sm table-responsive table-hover mt-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= Car.human_attribute_name("plate")%></th>
+        <th scope="col"><%= Car.human_attribute_name("mark")%></th>
+        <th scope="col"><%= Car.human_attribute_name("modelType")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @functionary.cars.each do |car| %>
+        <tr  class='clickable-row' data-href='<%=  car_path(car) %>'>
+          <td scope="row"><%= car.id %> </td>
+          <td><%= car.plate %></td>
+          <td><%= car.mark %></td>
+          <td><%= car.modelType %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <div class="form-group d-print-none ">
   <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-success" %>

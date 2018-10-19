@@ -5,7 +5,7 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.page params[:page]
+    @cars = Car.where("functionary_id = ?", [current_user.functionary] ).page params[:page]
   end
 
   # GET /cars/1
@@ -74,7 +74,7 @@ class CarsController < ApplicationController
     end
       
     def lists_selects
-        @list_functionaries = Functionary.all.order(:name)
+        @list_functionaries = Functionary.where(leader: current_user.functionary).or(Functionary.where(id: [current_user.functionary, current_user.functionary.leader])).order(:name).select(:id, :name)
     end
   
 end
