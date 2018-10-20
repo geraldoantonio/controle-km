@@ -71,11 +71,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Generate Entity-Relationship Diagrams for Rails applications http://voormedia.github.io/rails-erd/
-  gem "rails-erd"
-
+  gem 'rails-erd'
+  #MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface.
+  gem 'mailcatcher'
   #Better error page for Rack apps
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
 end
 
