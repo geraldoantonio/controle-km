@@ -56,6 +56,9 @@ gem 'jquery-ui-rails'
 #Ruby probressbar in terminal for long running jobs
 gem 'rake-progressbar'
 
+#A complete geocoding solution for Ruby.
+gem 'geocoder', '~> 1.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

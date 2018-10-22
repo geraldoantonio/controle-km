@@ -1,8 +1,10 @@
 <h1><i class="fas   fa-car"></i> <%= Car.model_name.human count: 2 %></h1>
 
-<%= link_to new_car_path do %>
-      <span class="pull-left"><i class="far fa-lg  fa-plus-square"></i> <%= t('buttons.new') << ' ' << Car.model_name.human
- %> </span>
+<% if can? :create, Car %>
+  <%= link_to new_car_path do %>
+        <span class="pull-left"><i class="far fa-lg  fa-plus-square"></i> <%= t('buttons.new') << ' ' << Car.model_name.human
+  %> </span>
+  <% end %>
 <% end %>
 
 <div  class="table-striped table-sm table-responsive table-hover mt-3">
@@ -14,6 +16,7 @@
         <th scope="col"><%= Car.human_attribute_name("plate")%></th>
         <th scope="col"><%= Car.human_attribute_name("mark")%></th>
         <th scope="col"><%= Car.human_attribute_name("modelType")%></th>
+        <th scope="col"><%= Functionary.human_attribute_name("name")%></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +26,7 @@
           <td><%= car.plate %></td>
           <td><%= car.mark %></td>
           <td><%= car.modelType %></td>
+          <td><%= car.functionary.name %></td>
         </tr>
       <% end %>
     </tbody>

@@ -4,15 +4,9 @@ class Displacement < ApplicationRecord
   belongs_to :addressSrc, class_name: "Address"
   belongs_to :addressDst, class_name: "Address"
   
-  validates :car_id, presence: true
-  validates :functionary_id, presence: true
-  validates :dateDay, presence: true
-  validates :osNumber, presence: true  
-  validates :osProject, presence: true
-  validates :startHour, presence: true
-  validates :addressSrc_id, presence: true  
-  validates :addressDst_id, presence: true
-  validates :kmStart, presence: true
+  validates :car_id, :functionary_id, :dateDay, :osNumber,
+            :osProject, :startHour, :addressSrc_id,
+            :addressDst_id, :kmStart, presence: true
 
   
   validate :km_end_start, :addressEqual
@@ -100,4 +94,9 @@ class Displacement < ApplicationRecord
     "(#{self.addressDst.description}) #{self.addressDst.address}, #{self.addressDst.city} - #{self.addressDst.uf}, #{self.addressDst.cep}"
   end
  
+  scope :with_displacement, ->(user){joins("INNER JOIN functionaries ON functionaries.id = displacements.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
+  
+  def total_blank?    
+     self.kmEnd.blank? || self.kmEnd.nil? || self.endHour.blank? || self.endHour.nil?
+  end
 end

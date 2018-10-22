@@ -47,6 +47,7 @@ pt-BR:
         address: Endereço
         city: Cidade
         uf: UF
+        functionary_id: Funcionário
         geolocalization: Geolocalização
         description: Local
         created_at: Criado em
@@ -75,7 +76,12 @@ pt-BR:
         password_confirmation: Confirmar Senha
 
 
-
+  unauthorized:
+    manage:
+      all: "Você não está autorizado %{action} %{subject}."
+      user: "Não permitido para gerenciar outras contas de usuário."
+    update:
+      project: "Não é permitido atualizar este projeto."
 
   date:
     abbr_day_names:

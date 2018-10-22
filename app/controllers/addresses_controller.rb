@@ -1,10 +1,14 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :lists_selects, only: [:edit, :update, :create, :new]
 
+  #Cancancan
+  load_and_authorize_resource
+  
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = Address.order(:uf, :city, :description).page params[:page]
+    @addresses = Address.with_address(current_user).order(:uf, :city, :description).page params[:page]
   end
 
   # GET /addresses/1
@@ -69,6 +73,10 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:description, :cep, :address, :city, :uf, :geolocalization)
+      params.require(:address).permit(:functionary_id, :description, :cep, :address, :city, :uf, :geolocalization)
+    end
+
+    def lists_selects
+      @list_functionaries = Functionary.where(leader: current_user.functionary).or(Functionary.where(id: current_user.functionary)).order(:name).select(:id, :name)
     end
 end

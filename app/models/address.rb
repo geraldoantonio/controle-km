@@ -1,7 +1,6 @@
 class Address < ApplicationRecord
   has_many :displacements
-
- # accepts_nested_attributes_for :displacements
+  belongs_to :functionary
 
   validates :description, presence: true
   validates :address, presence: true
@@ -18,4 +17,7 @@ class Address < ApplicationRecord
   def full_address
     "(#{self.description}) #{self.address}, #{self.city} - #{self.uf}, #{self.cep}"
   end  
+  
+  scope :with_address, ->(user){joins("INNER JOIN functionaries ON functionaries.id = addresses.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
+
 end

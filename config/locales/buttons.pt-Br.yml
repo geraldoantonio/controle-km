@@ -21,5 +21,7 @@
     signup: Cadastrar
     signout: Sair
     password_reset: Recuperar
+    confirmation_instructions: Não recebeu instruções de confirmação? 
+    unlock_instructions: Não recebeu instruções de desbloqueio?
     remember_me: Manter logado
     google_maps: Google Maps

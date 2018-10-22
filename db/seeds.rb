@@ -16,7 +16,8 @@ puts "Gerando usuário padrão..."
   user = User.new(
                     email: "admin@solutis.com.br",
                  password: "123456", 
-    password_confirmation: "123456"
+    password_confirmation: "123456",
+             confirmed_at: Time.now.utc, # skip confirmation
   )
   user.build_functionary
   user.functionary.name = "ADMIN - Solutis Tecnologias "

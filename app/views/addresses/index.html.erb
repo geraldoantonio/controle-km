@@ -1,8 +1,10 @@
 <h1><i class="fas fa-map-marker-alt"></i> <%= Address.model_name.human count: 2 %></h1>
 
-<%= link_to new_address_path do %>
-      <span class="pull-left"><i class="far fa-lg  fa-plus-square"></i> <%= t('buttons.new') << ' ' << Address.model_name.human
- %> </span>
+<% if can? :create, Address %>
+  <%= link_to new_address_path do %>
+        <span class="pull-left"><i class="far fa-lg  fa-plus-square"></i> <%= t('buttons.new') << ' ' << Address.model_name.human
+  %> </span>
+  <% end %>
 <% end %>
 
 <div  class="table-striped table-sm table-responsive table-hover mt-3">
@@ -14,6 +16,7 @@
         <th scope="col"><%= Address.human_attribute_name("description") %> </th>
         <th scope="col"><%= Address.human_attribute_name("city") %> </th>
         <th scope="col"><%= Address.human_attribute_name("uf") %> </th>
+        <th scope="col"><%= Address.human_attribute_name("functionary_id") %> </th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +25,8 @@
           <td  scope="row"><%= address.id %></td>
           <td><%= address.description %></td>
           <td><%= address.city %></td>
-          <td><%= address.uf %></td>          
+          <td><%= address.uf %></td>     
+          <td><%= address.functionary.name %></td>          
         </tr>
       <% end %>
     </tbody>

@@ -11,6 +11,9 @@
         <th scope="col"><%= Displacement.human_attribute_name("osProject" )%></th>
         <th scope="col"><%= Displacement.human_attribute_name("startHour") %></th>
         <th scope="col"><%= Displacement.human_attribute_name("addressDst") %></th>
+        <% if %w[leader].include? current_user.functionary.function %>
+          <th scope="col"><%= Displacement.human_attribute_name("functionary_id") %></th>
+        <% end %>
       </tr>
     </thead>
  
@@ -25,13 +28,16 @@
     
     <tbody >
       <% displacements.each do |displacement| %>
-      <tr class='clickable-row' data-href='<%=  displacement_path(displacement) %>' >
+      <tr class='clickable-row <%= "table-warning" if displacement.total_blank?  %>' data-href='<%=  displacement_path(displacement) %>' >
           <td scope="row"><%= displacement.id %> </td>
           <td><%= l displacement.dateDay %></td>
           <td><%= displacement.osNumber %></td>
           <td><%= displacement.osProject %></td>
           <td><%= displacement.startHour.strftime("%H:%M") unless displacement.startHour.nil?  %></td>
-          <td><%= displacement.full_address_dst %></td>         
+          <td><%= displacement.full_address_dst %></td>  
+          <% if %w[leader].include? current_user.functionary.function %> 
+            <td><%= displacement.functionary.name %></td>  
+          <% end %>
         </tr>      
       <% end %>
     </tbody>

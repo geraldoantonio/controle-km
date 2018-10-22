@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_220248) do
+ActiveRecord::Schema.define(version: 2018_10_21_230605) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "description"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_10_20_220248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "geolocalization"
+    t.integer "functionary_id"
+    t.index ["functionary_id"], name: "index_addresses_on_functionary_id"
   end
 
   create_table "cars", force: :cascade do |t|

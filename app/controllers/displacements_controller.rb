@@ -2,6 +2,8 @@ class DisplacementsController < ApplicationController
   before_action :set_displacement, only: [:show, :edit, :update, :destroy]
   before_action :lists_selects, only: [:edit, :update, :create, :new]
   
+  #Cancancan
+  load_and_authorize_resource
   
   # GET /displacements
   # GET /displacements.json
@@ -12,7 +14,7 @@ class DisplacementsController < ApplicationController
     end
     
     @filterrific = initialize_filterrific(
-        Displacement,
+        Displacement.with_displacement(current_user),
         params[:filterrific],
         select_options: {
           sorted_by: Displacement.options_for_sorted_by,
@@ -106,8 +108,8 @@ class DisplacementsController < ApplicationController
     end
     
     def lists_selects
-        @list_addressess = Address.all.order(:description)
-        @list_functionaries = Functionary.where(leader: current_user.functionary).order(:name)
-        @list_cars = Car.all
+      @list_addressess = Address.joins("INNER JOIN functionaries ON functionaries.id = addresses.functionary_id").where("functionary_id = ? OR leader = ? ", current_user.functionary, current_user.functionary).order(:description)
+      @list_functionaries = Functionary.where(leader: current_user.functionary).or(Functionary.where(id: current_user.functionary)).order(:name).select(:id, :name)
+      @list_cars = Car.joins("INNER JOIN functionaries ON functionaries.id = cars.functionary_id").where("functionary_id = ? OR leader = ?", current_user.functionary, current_user.functionary)
     end
 end

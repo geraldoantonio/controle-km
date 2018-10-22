@@ -7,4 +7,10 @@ class Car < ApplicationRecord
   def full_car
     "#{mark} #{modelType} - #{plate}"
   end
+
+  def car_functionary
+    "#{mark} #{modelType} - #{plate} - #{functionary.name}"
+  end
+  scope :with_car, ->(user){joins("INNER JOIN functionaries ON functionaries.id = cars.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
+  
 end

@@ -98,8 +98,14 @@
 
 
 <div class="form-group text-center ">
-  <%= link_to t('buttons.back'), displacements_path, class:"btn btn-success" %>
-  <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-primary" %>
-  <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+  <% if can? :index, Displacement %>
+    <%= link_to t('buttons.back'), displacements_path, class:"btn btn-success" %>
+ <% end %>
+  <% if can? :update, Displacement %>
+    <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-primary" %>
+  <% end %>  
+  <% if can? :destroy, Displacement %>
+    <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+  <% end %>
 </div>
 

@@ -2,10 +2,13 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   before_action :lists_selects, only: [:edit, :update, :create, :new]
 
+  #Cancancan
+  load_and_authorize_resource
+  
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.where("functionary_id = ?", [current_user.functionary] ).page params[:page]
+    @cars = Car.with_car(current_user).page params[:page]
   end
 
   # GET /cars/1

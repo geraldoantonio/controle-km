@@ -2,12 +2,14 @@ class FunctionariesController < ApplicationController
   before_action :set_functionary, only: [:show, :edit, :update, :destroy]
   before_action :lists_selects, only: [:edit, :create, :new, :update]
   
+  #Cancancan
+  load_and_authorize_resource
 
   #Ex:- :default =>''
   # GET /functionaries
   # GET /functionaries.json
   def index
-    @functionaries = Functionary.where("leader = ? or id = ? ", current_user.functionary, current_user.functionary).page params[:page]
+    @functionaries = Functionary.with_functionary(current_user).page params[:page]
   end
 
   # GET /functionaries/1
@@ -80,8 +82,6 @@ class FunctionariesController < ApplicationController
       params.require(:functionary).permit(
         :matriculation, :name, :function, :active, :leader, 
         :user_attributes => [:id, :email, :password, :password_confirmation]
-      )  
+      ) 
     end
-
-  
 end

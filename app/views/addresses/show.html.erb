@@ -57,8 +57,17 @@
 
 
 <div class="form-group text-center">
-  <%= link_to t('buttons.back'), addresses_path, class:"btn btn-success" %>
-  <%= link_to t('buttons.edit'), edit_address_path(@address), class:"btn btn-primary" %>
-  <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+  <% if can? :index, Address %>
+    <%= link_to t('buttons.back'), addresses_path, class:"btn btn-success" %>
+  <% end %>
+
+  <% if can? :update, Address %>
+    <%= link_to t('buttons.edit'), edit_address_path(@address), class:"btn btn-primary" %>
+  <% end %>
+
+  <% if can? :destroy, Address %>
+    <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+  <% end %>
+
 </div>
     
