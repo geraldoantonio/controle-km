@@ -17,6 +17,13 @@ class Address < ApplicationRecord
   def full_address
     "(#{self.description}) #{self.address}, #{self.city} - #{self.uf}, #{self.cep}"
   end  
+  def latitude
+    self.geolocalization.split(",")[0]
+  end
+  def longitude    
+    self.geolocalization.split(",")[1]
+  end
+  
   
   scope :with_address, ->(user){joins("INNER JOIN functionaries ON functionaries.id = addresses.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
 

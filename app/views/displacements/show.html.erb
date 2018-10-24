@@ -1,44 +1,37 @@
 <h1 ><i class="fas fa-location-arrow"></i><%= " #{Displacement.model_name.human}: #{@displacement.id} " %></h1>
   
   <div class="row">
-    <div class="col-md-8">      
+    <div class="col-md-8"> 
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: '<%= @displacement.addressSrc.geolocalization %>'
+        });
+        directionsDisplay.setMap(map);
 
-      <%= javascript_tag("
-          function initMap() {
-            var directionsService = new google.maps.DirectionsService();
-            var directionsDisplay = new google.maps.DirectionsRenderer();
-            var haight = new google.maps.LatLng( #{@displacement.addressSrc.geolocalization} );
-            var oceanBeach = new google.maps.LatLng( #{@displacement.addressDst.geolocalization} );
-            var mapOptions = {
-              zoom: 14,
-              center: haight
-            }
-            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            directionsDisplay.setMap(map);
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: '<%= @displacement.addressSrc.geolocalization %>',
+          destination: '<%= @displacement.addressDst.geolocalization %>',
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
           }
+        });
+      }
+    </script>
+   </div> 
 
-          function calcRoute() {
-            var selectedMode = document.getElementById('mode').value;
-            var request = {
-                origin: haight,
-                destination: oceanBeach,
-                // Note that Javascript allows us to access the constant
-                // using square brackets and a string value as its
-                // 'property.'
-                travelMode: google.maps.TravelMode[selectedMode]
-            };
-            directionsService.route(request, function(response, status) {
-              if (status == 'OK') {
-                directionsDisplay.setDirections(response);
-              }
-            });
-          }
-        ")
-      %>
-
-      <div id="map"></div>
-
-    </div> 
     <div class="col-md-4">      
         <p>
           <strong><%= Displacement.human_attribute_name("car_id") %>: </strong>
