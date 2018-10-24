@@ -10,7 +10,7 @@ class DisplacementsController < ApplicationController
   def index
     #@displacements = Displacement.order(dateDay: :desc, startHour: :desc).page params[:page]
     if  request.format == "csv"
-      @displacements_csv = Displacement.order(:dateDay, :startHour)
+      @displacements_csv = Displacement.with_displacement(current_user).order(:dateDay, :startHour)
     end
     
     @filterrific = initialize_filterrific(
