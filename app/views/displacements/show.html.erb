@@ -98,7 +98,7 @@
     <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-primary" %>
   <% end %>  
   <% if can? :destroy, Displacement %>
-    <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm:  I18n.t('messages.confirm_with',item: " #{Displacement.model_name.human}: #{@displacement.id} " )}, class: "btn btn-danger" %>
   <% end %>
 </div>
 

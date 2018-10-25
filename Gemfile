@@ -78,6 +78,8 @@ group :development do
   #Better error page for Rack apps
   gem 'better_errors'
   gem 'binding_of_caller'
+  #RailsPanel is a Chrome extension for Rails development that will end your tailing of development.log. 
+  gem 'meta_request'
 
 end
 

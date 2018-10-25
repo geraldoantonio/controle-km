@@ -16,7 +16,9 @@
         <th scope="col"><%= Address.human_attribute_name("description") %> </th>
         <th scope="col"><%= Address.human_attribute_name("city") %> </th>
         <th scope="col"><%= Address.human_attribute_name("uf") %> </th>
-        <th scope="col"><%= Address.human_attribute_name("functionary_id") %> </th>
+        <% if %w[leader].include? current_user.functionary.function %> 
+          <th scope="col"><%= Address.human_attribute_name("functionary_id") %> </th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +28,9 @@
           <td><%= address.description %></td>
           <td><%= address.city %></td>
           <td><%= address.uf %></td>     
-          <td><%= address.functionary.name %></td>          
+          <% if %w[leader].include? current_user.functionary.function %> 
+            <td><%= address.functionary.name %></td>   
+          <% end %>       
         </tr>
       <% end %>
     </tbody>

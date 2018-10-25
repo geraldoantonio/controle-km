@@ -33,7 +33,7 @@ class FunctionariesController < ApplicationController
     @functionary = Functionary.new(functionary_params)
     respond_to do |format|
       if @functionary.save
-        format.html { redirect_to @functionary, notice: 'Functionary was successfully created.' }
+        format.html { redirect_to @functionary, notice: I18n.t('messages.created_with', item: (Functionary.model_name.human count: 1) )}
         format.json { render :show, status: :created, location: @functionary }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class FunctionariesController < ApplicationController
   def update
     respond_to do |format|
       if @functionary.update(functionary_params)
-        format.html { redirect_to @functionary, notice: 'Functionary was successfully updated.' }
+        format.html { redirect_to @functionary, notice: I18n.t('messages.updated_with', item: (Functionary.model_name.human count: 1)  ) }
         format.json { render :show, status: :ok, location: @functionary }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class FunctionariesController < ApplicationController
   def destroy
     @functionary.destroy
     respond_to do |format|
-      format.html { redirect_to functionaries_url, notice: 'Functionary was successfully destroyed.' }
+      format.html { redirect_to functionaries_url, notice:  I18n.t('messages.destroyed_with', item: (Functionary.model_name.human count: 1) ) }
       format.json { head :no_content }
     end
   end

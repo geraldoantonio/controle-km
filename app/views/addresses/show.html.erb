@@ -5,23 +5,6 @@
   </h1>
 </div>
 
-<%= javascript_tag("
-    function initMap() {   
-      
-     var myLatLng = new google.maps.LatLng(#{@address.geolocalization}) ;
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          center: myLatLng
-        });
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: '#{@address.full_address}'
-        });
-    }
-  ")
-%>
-
 <div class="row">
   <div class="col-md-8">
       <iframe 
@@ -58,6 +41,14 @@
         <strong><%= Address.human_attribute_name("cep") %>: </strong>
         <%= @address.cep %>
       </p>
+
+      <% if %w[leader].include? current_user.functionary.function %> 
+        <p>
+          <strong><%= Address.human_attribute_name("functionary_id") %>: </strong>
+          <%= @address.functionary.name %>
+        </p>
+      <% end %>
+      
   </div>
 </div>
 
@@ -72,7 +63,7 @@
   <% end %>
 
   <% if can? :destroy, Address %>
-    <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Address.model_name.human}: #{@address.description} " )}, class: "btn btn-danger" %>
   <% end %>
 
 </div>

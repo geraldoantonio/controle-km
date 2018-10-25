@@ -68,7 +68,7 @@
     <%= link_to t('buttons.edit'), edit_functionary_path(@functionary), class:"btn btn-primary" %>
   <% end %>
   <% if can? :destroy, Functionary %>
-    <%= link_to t('buttons.delete'), functionary_path(@functionary), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), functionary_path(@functionary), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Functionary.model_name.human}: #{@functionary.name} " )}, class: "btn btn-danger" %>
   <% end %>
 </div>
     

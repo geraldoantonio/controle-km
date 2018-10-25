@@ -94,9 +94,10 @@ class Displacement < ApplicationRecord
     "(#{self.addressDst.description}) #{self.addressDst.address}, #{self.addressDst.city} - #{self.addressDst.uf}, #{self.addressDst.cep}"
   end
  
-  scope :with_displacement, ->(user){joins("INNER JOIN functionaries ON functionaries.id = displacements.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
-  
   def total_blank?    
      self.kmEnd.blank? || self.kmEnd.nil? || self.endHour.blank? || self.endHour.nil?
   end
+
+  scope :with_displacement, ->(user){includes(:functionary,:addressDst).joins("INNER JOIN functionaries ON functionaries.id = displacements.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
+  
 end

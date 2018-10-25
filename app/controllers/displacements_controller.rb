@@ -63,7 +63,7 @@ class DisplacementsController < ApplicationController
 
     respond_to do |format|
       if @displacement.save
-        format.html { redirect_to @displacement, notice: 'Displacement was successfully created.' }
+        format.html { redirect_to @displacement, notice: I18n.t('messages.created_with', item: (Displacement.model_name.human count: 1) )}
         format.json { render :show, status: :created, location: @displacement }
       else
         format.html { render :new }
@@ -77,7 +77,7 @@ class DisplacementsController < ApplicationController
   def update
     respond_to do |format|
       if @displacement.update(displacement_params)
-        format.html { redirect_to @displacement, notice: 'Displacement was successfully updated.' }
+        format.html { redirect_to @displacement, notice: I18n.t('messages.updated_with', item: (Displacement.model_name.human count: 1)  )}
         format.json { render :show, status: :ok, location: @displacement }
       else
         format.html { render :edit }
@@ -91,7 +91,7 @@ class DisplacementsController < ApplicationController
   def destroy
     @displacement.destroy
     respond_to do |format|
-      format.html { redirect_to displacements_url, notice: 'Displacement was successfully destroyed.' }
+      format.html { redirect_to displacements_url, notice: I18n.t('messages.destroyed_with', item: (Displacement.model_name.human count: 1) )}
       format.json { head :no_content }
     end
   end
