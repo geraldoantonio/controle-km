@@ -8,7 +8,6 @@ class DisplacementsController < ApplicationController
   # GET /displacements
   # GET /displacements.json
   def index
-    #@displacements = Displacement.order(dateDay: :desc, startHour: :desc).page params[:page]
     if  request.format == "csv"
       @displacements_csv = Displacement.with_displacement(current_user).order(:dateDay, :startHour)
     end
@@ -108,8 +107,8 @@ class DisplacementsController < ApplicationController
     end
     
     def lists_selects
-      @list_addressess = Address.joins("INNER JOIN functionaries ON functionaries.id = addresses.functionary_id").where("functionary_id = ? OR leader = ? ", current_user.functionary, current_user.functionary).order(:description)
-      @list_functionaries = Functionary.where(leader: current_user.functionary).or(Functionary.where(id: current_user.functionary)).order(:name).select(:id, :name)
-      @list_cars = Car.joins("INNER JOIN functionaries ON functionaries.id = cars.functionary_id").where("functionary_id = ? OR leader = ?", current_user.functionary, current_user.functionary)
+      @list_addressess = Address.with_address(current_user)
+      @list_functionaries = Functionary.with_functionary(current_user)
+      @list_cars = Car.with_car(current_user)
     end
 end

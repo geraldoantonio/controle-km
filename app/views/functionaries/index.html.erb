@@ -24,7 +24,7 @@
           <td scope="row"><%= functionary.id %> </td>
           <td><%= functionary.matriculation %></td>
           <td><%= functionary.name %></td>
-          <td><%= render inline: functionary.active_icon(functionary.active) %></td>
+          <td><%= render inline: active_icon(functionary.active) %></td>
         </tr>
       <% end %>
     </tbody>

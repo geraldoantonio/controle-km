@@ -14,7 +14,7 @@
         scrolling="no" 
         marginheight="0" 
         marginwidth="0" 
-        src="https://www.openstreetmap.org/export/embed.html?bbox=<%= @address.longitude %>%2C<%= @address.latitude %>%2C<%= @address.longitude %>%2C<%= @address.latitude %>&amp;layer=mapnik&amp;marker=<%= @address.latitude %>%2C<%= @address.longitude %>" style="border: none"></iframe>
+        src="https://www.openstreetmap.org/export/embed.html?bbox=<%= longitude(@address.geolocalization) %>%2C<%= latitude(@address.geolocalization) %>%2C<%= longitude(@address.geolocalization) %>%2C<%= latitude(@address.geolocalization) %>&amp;layer=mapnik&amp;marker=<%= latitude(@address.geolocalization) %>%2C<%= longitude(@address.geolocalization) %>" style="border: none"></iframe>
   </div>
   
   <div class="col-md-4">
@@ -51,7 +51,6 @@
       
   </div>
 </div>
-
 
 <div class="form-group text-center">
   <% if can? :index, Address %>

@@ -58,3 +58,36 @@ function address_include(data){
   document.getElementById("address_uf").value = address.region_a;
 
 }
+
+
+
+function initMap() {
+
+  var addressSrc = document.getElementById("srcLocal").innerHTML 
+  var addressDst = document.getElementById("dstLocal").innerHTML 
+
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: self.addressSrc
+  });
+  directionsDisplay.setMap(map);
+
+  calculateAndDisplayRoute(directionsService, directionsDisplay, addressSrc, addressDst);
+}
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, addressSrc, addressDst) {
+  
+  directionsService.route({
+    origin: addressSrc,
+    destination: addressDst,
+    travelMode: 'DRIVING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      directionsDisplay.setDirections(response);
+    } else {
+      toastr['error']('Falha ao obter direção: ' + status);
+    }
+  });
+}

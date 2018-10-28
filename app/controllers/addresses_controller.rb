@@ -77,7 +77,7 @@ class AddressesController < ApplicationController
     end
 
     def lists_selects
-      @list_functionaries = Functionary.where(leader: current_user.functionary).or(Functionary.where(id: current_user.functionary)).order(:name).select(:id, :name)
+      @list_functionaries = Functionary.with_functionary(current_user).select(:id, :name)
     end
 
 

@@ -9,20 +9,7 @@ class Functionary < ApplicationRecord
             :leader,  presence: true
 
   enum function: [ :leader, :tecnical ]
-  
-  def leader_name(functionary)
-    Functionary.find(functionary).name 
-  end
-  
-  def active_icon(active)
-    if active == true
-      "<i class=\"fas fa-lg fa-toggle-on\"></i>"
-    else      
-      "<i class=\"fas fa-lg fa-toggle-off\"></i>"
-    end
-  end
 
-  scope :with_functionary, ->(user){where("id = ? OR leader = ?", user.functionary, user.functionary)}
-  
+  scope :with_functionary, ->(user){where("id = ? OR leader = ?", user.functionary, user.functionary).order(:name)}
 
 end

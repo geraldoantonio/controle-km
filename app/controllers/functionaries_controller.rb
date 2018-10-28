@@ -70,7 +70,6 @@ class FunctionariesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_functionary
       @functionary = Functionary.find(params[:id])
-      #find_by(:user => current_user)
     end
 
     def lists_selects

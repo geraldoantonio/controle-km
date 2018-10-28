@@ -38,7 +38,7 @@
   <% end %>
 
   <% if can? :destroy, Car %>
-    <%= link_to t('buttons.delete'), car_path(@car), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Car.model_name.human}: #{@car.full_car} " )}, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), car_path(@car), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Car.model_name.human}: #{full_car(@car)} " )}, class: "btn btn-danger" %>
   <% end %>
 </div>
     

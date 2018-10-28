@@ -7,13 +7,9 @@ class Displacement < ApplicationRecord
   validates :car_id, :functionary_id, :dateDay, :osNumber,
             :osProject, :startHour, :addressSrc_id,
             :addressDst_id, :kmStart, presence: true
-
   
-  validate :km_end_start, :addressEqual
-  
-  
-  before_save :set_km_count
-  
+  validate :km_end_start, :addressEqual  
+  before_save :set_km_count 
   enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL  ]
   
   filterrific(
@@ -82,17 +78,6 @@ class Displacement < ApplicationRecord
     end
   end
   
-  def full_car
-    "#{self.car.mark} #{self.car.modelType} - #{self.car.plate}"
-  end  
-  
-  def full_address_src
-    "(#{self.addressSrc.description}) #{self.addressSrc.address}, #{self.addressSrc.city} - #{self.addressSrc.uf}, #{self.addressSrc.cep}"
-  end  
-  
-  def full_address_dst
-    "(#{self.addressDst.description}) #{self.addressDst.address}, #{self.addressDst.city} - #{self.addressDst.uf}, #{self.addressDst.cep}"
-  end
  
   def total_blank?    
      self.kmEnd.blank? || self.kmEnd.nil? || self.endHour.blank? || self.endHour.nil?

@@ -22,7 +22,7 @@
 
 <p>
   <strong><%= Functionary.human_attribute_name("leader") %>: </strong>
-  <%= @functionary.leader_name(@functionary.leader) %>
+  <%= leader_name(@functionary.leader) %>
 </p>
 
 <p>
@@ -32,7 +32,7 @@
 
 <p>
   <strong><%= Functionary.human_attribute_name("active") %>: </strong>
-  <%= render inline: @functionary.active_icon(@functionary.active) %>
+  <%= render inline: active_icon(@functionary.active) %>
 </p>
 
 
