@@ -15,7 +15,7 @@ class Ability
         can [:read, :update, :destroy], Displacement, functionary_id: user.functionary.id
         can [:read, :update, :destroy], Displacement, functionary: {leader: user.functionary.id}
 
-        can [:create ], Functionary
+        can [:create], Functionary
         can [:read, :update, :destroy], Functionary, id: user.functionary.id
         can [:read, :update, :destroy], Functionary, leader: user.functionary.id
     else

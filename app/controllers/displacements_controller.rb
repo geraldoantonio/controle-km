@@ -16,7 +16,10 @@ class DisplacementsController < ApplicationController
         Displacement.with_displacement(current_user),
         params[:filterrific],
         select_options: {
+          with_project: Displacement::osProjects,
           sorted_by: Displacement.options_for_sorted_by,
+          with_functionary_id: Functionary.with_functionary(current_user).options_for_select
+        
         },
         default_filter_params: {
           with_dateDay_gte: Date.today,

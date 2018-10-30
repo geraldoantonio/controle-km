@@ -15,9 +15,11 @@ class Displacement < ApplicationRecord
   filterrific(
    default_filter_params: { sorted_by: 'dateDay_desc' },
    available_filters: [
-     :sorted_by,      
-     :with_dateDay_gte,
-     :with_dateDay_lt,
+      :sorted_by,      
+      :with_dateDay_gte,
+      :with_dateDay_lt,
+      :with_project,
+      :with_functionary_id
    ]
   )
  # define ActiveRecord scopes for
@@ -30,7 +32,7 @@ class Displacement < ApplicationRecord
     when /^id_/
       order("displacements.id #{ direction }")
     when /^dateDay_/
-      order("displacements.\"dateDay\" #{ direction }","displacements.\"startHour\" desc")
+      order("displacements.\"dateDay\" #{ direction }","displacements.\"startHour\" desc") 
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
@@ -44,7 +46,14 @@ class Displacement < ApplicationRecord
     where('displacements."dateDay" <= ?', reference_time)
   }
   
+  scope :with_functionary_id, lambda {|functionary_ids|
+    where(functionary_id: [*functionary_ids])
+  }
  
+  scope :with_project, lambda {|project|
+    where(osProject: project)
+  } 
+
   def self.options_for_sorted_by
     [
       ['Id', 'id_desc'],

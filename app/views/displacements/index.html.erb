@@ -20,6 +20,15 @@
       </div>
       
       <div class="col-md-3">
+        <%= f.label "Projeto" %>
+        <%= f.select(
+          :with_project,
+          @filterrific.select_options[:with_project],
+          {include_blank: '- Qualquer -'}, { :class => 'form-control' }
+        ) %>
+      </div>
+
+      <div class="col-md-3">
         <%= f.label t('labels.date_first') %>
         <%= f.date_field(:with_dateDay_gte, class: 'form-control ') %>
       </div>
@@ -29,19 +38,29 @@
         <%= f.date_field(:with_dateDay_lt, class: 'form-control') %>
       </div>
 
-      <div class="col-md-3">
-          <br>
-          <%= link_to(
-            t('buttons.reset_filter'),
-            reset_filterrific_url,
-            class:"btn btn-default"
-          ) %>
-      </div>
-       <%= link_to 'Download CSV list', displacements_path(format: :csv), {target: :_blank} %>
     </div>
-  </div>
 
-  <%= render_filterrific_spinner %>
+    <div class="row">  
+      <div class="col-md-6">
+        <%= f.label "Funcionário" %>
+        <%= f.select(
+          :with_functionary_id,
+          @filterrific.select_options[:with_functionary_id],
+          {include_blank: '- Qualquer -'}, { :class => 'form-control' }
+        ) %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label "Opções"%><br />
+        <%= link_to( t('buttons.reset_filter'), reset_filterrific_url, class:"btn btn-outline-primary") %>
+        <%= link_to( 'Exportar - CSV', displacements_path(format: :csv), {target: :_blank, class: "btn btn-outline-primary"} ) %>
+      </div>
+
+    </div>
+
+  </div>
+  <%= render_filterrific_spinner %> 
+  
 <% end %>
 
 
