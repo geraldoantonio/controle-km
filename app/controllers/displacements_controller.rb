@@ -106,7 +106,7 @@ class DisplacementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def displacement_params
-      params.require(:displacement).permit(:car_id, :functionary_id, :dateDay, :osNumber, :osProject, :startHour, :endHour, :addressSrc_id, :addressDst_id, :kmStart, :kmEnd, :kmCount, :annotation)
+      params.require(:displacement).permit(:car_id, :functionary_id, :dateDay, :osNumber, :osProject, :startHour, :endHour, :addressSrc_id, :addressDst_id, :kmStart, :kmEnd, :kmCount, :annotation, :velocity)
     end
     
     def lists_selects
@@ -114,4 +114,5 @@ class DisplacementsController < ApplicationController
       @list_functionaries = Functionary.with_functionary(current_user)
       @list_cars = Car.with_car(current_user)
     end
+   
 end

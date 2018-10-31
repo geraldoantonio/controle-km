@@ -9,8 +9,9 @@ class Displacement < ApplicationRecord
             :addressDst_id, :kmStart, presence: true
   
   validate :km_end_start, :addressEqual  
-  before_save :set_km_count 
-  enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL  ]
+  before_save :set_km_count, :set_velocity_medium
+  after_save :km_update
+  enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL, :BAHIAGÁS, :UFBA, :IRDEB  ]
   
   filterrific(
    default_filter_params: { sorted_by: 'dateDay_desc' },
@@ -54,6 +55,12 @@ class Displacement < ApplicationRecord
     where(osProject: project)
   } 
 
+  scope :with_displacement, ->(user){
+    includes(:functionary,:addressDst)
+    .joins("INNER JOIN functionaries ON functionaries.id = displacements.functionary_id")
+    .where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)
+  }
+  
   def self.options_for_sorted_by
     [
       ['Id', 'id_desc'],
@@ -85,13 +92,26 @@ class Displacement < ApplicationRecord
         self.kmCount = kmEnd - kmStart
       end
     end
+  end 
+
+  def set_velocity_medium    
+    unless kmCount.nil? || startHour.nil? || endHour.nil?
+      self.velocity = self.kmCount / ((self.endHour -  self.startHour)/3600)
+    end
   end
-  
  
   def total_blank?    
      self.kmEnd.blank? || self.kmEnd.nil? || self.endHour.blank? || self.endHour.nil?
   end
 
-  scope :with_displacement, ->(user){includes(:functionary,:addressDst).joins("INNER JOIN functionaries ON functionaries.id = displacements.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)}
-  
+  def km_update
+    car = Car.find(self.car_id)
+    if car.km.nil?
+      car.km = 0
+    end  
+    if car.km < self.kmEnd
+      car.update(km: self.kmEnd)
+    end
+  end
+
 end

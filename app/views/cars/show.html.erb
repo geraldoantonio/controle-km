@@ -21,6 +21,10 @@
 </p>
 
 <p>
+  <strong><%= Car.human_attribute_name("km")%>: </strong>
+  <%= @car.km %>
+</p>
+<p>
   <strong><%= Car.human_attribute_name("functionary_id")%>: </strong>
   <%= link_to functionary_path(@car.functionary) do
     @car.functionary.name

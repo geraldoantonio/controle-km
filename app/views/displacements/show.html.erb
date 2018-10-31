@@ -55,6 +55,10 @@
           <%= @displacement.kmCount %>
         </p>
         <p>
+          <strong><%= Displacement.human_attribute_name("velocity") %>:</strong>
+          <%= velocity_km(@displacement.velocity) %>
+        </p>
+        <p>
           <strong><%= Displacement.human_attribute_name("annotation") %>:</strong>
           <%= @displacement.annotation %>
         </p>

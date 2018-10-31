@@ -1,24 +1,25 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "form-signin text-center"})  do |f| %>
-      <img class="mb-4" src="https://s3.amazonaws.com/gupy5/production/companies/167/images/logo.jpg" alt="" width="82" height="92">
-      <h1 class="h3 mb-3 font-weight-normal">Gestão de KM - Solutis</h1>  
+     
+  <%= image_tag("logo.jpg", class: 'mb-4', width:'82', height: '92' )%>  
+  <h1 class="h3 mb-3 font-weight-normal">Gestão de KM - Solutis</h1>  
       
-      <p> Forneça suas credenciais para entrar</p>
+  <p> Forneça suas credenciais para entrar</p>
     
-    <div class="input-group mb-3">
-      <%= f.label :email, class: 'sr-only' %>      
-      <%= f.email_field :email, {autocomplete: "email", class: "form-control ", placeholder: "Usuário", required: "required", autofocus: true} %>   
-      <div class="input-group-append">
-        <span class="input-group-text"><i class="fas fa-user"></i></span>
-      </div>
+  <div class="input-group mb-3">
+    <%= f.label :email, class: 'sr-only' %>      
+    <%= f.email_field :email, {autocomplete: "email", class: "form-control ", placeholder: "Usuário", required: "required", autofocus: true} %>   
+    <div class="input-group-append">
+      <span class="input-group-text"><i class="fas fa-user"></i></span>
     </div>
-    <div class="input-group mb-2">
-      <%= f.label :password, class: 'sr-only' %>
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: "required" %>
-      <div class="input-group-append">
-        <span class="input-group-text" style="height: 80%"><i class="fas fa-lock"></i></span>
-      </div>
+  </div>
+  
+  <div class="input-group mb-2">
+    <%= f.label :password, class: 'sr-only' %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: "required" %>
+    <div class="input-group-append">
+      <span class="input-group-text" style="height: 80%"><i class="fas fa-lock"></i></span>
     </div>
-
+  </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field text-left">
@@ -27,11 +28,11 @@
     </div>
   <% end -%>
 
-    <%= submit_tag t('buttons.signin'),  class:"btn btn-lg btn-primary btn-block" %>
+  <%= submit_tag t('buttons.signin'),  class:"btn btn-lg btn-primary btn-block" %>
 
-      <p class="mt-5 mb-3 text-muted">
-        <%= render "devise/shared/links" %>
-      </p>
+  <p class="mt-5 mb-3 text-muted">
+    <%= render "devise/shared/links" %>
+  </p>
 
 <% end %>
 

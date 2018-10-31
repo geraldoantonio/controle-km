@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_21_230605) do
+ActiveRecord::Schema.define(version: 2018_10_30_234019) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "description"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_230605) do
     t.integer "functionary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "km"
     t.index ["functionary_id"], name: "index_cars_on_functionary_id"
   end
 
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_230605) do
     t.text "annotation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "velocity"
     t.index ["addressDst_id"], name: "index_displacements_on_addressDst_id"
     t.index ["addressSrc_id"], name: "index_displacements_on_addressSrc_id"
     t.index ["car_id"], name: "index_displacements_on_car_id"

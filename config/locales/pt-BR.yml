@@ -39,6 +39,7 @@ pt-BR:
         kmEnd: Km final
         kmCount: Total Km
         annotation: Observações
+        velocity: Velocidade Média
         created_at: Criado em
         updated_at: Atualizado em
       address:
@@ -58,6 +59,7 @@ pt-BR:
         modelType: Modelo
         mark: Marca
         functionary_id: Funcionário
+        km: Quilometragem(KM)
         created_at: Criado em
         updated_at: Atualizado em
       functionary:
