@@ -9,7 +9,7 @@
   <div class="form-row">
     <div class="form-group col-xs-12 col-sm-12 col-md-4">
       <%= form.label :car_id %>      
-     <% options = options_from_collection_for_select(@list_cars, 'id', :plate , @displacement.car_id) %>
+     <% options = option_groups_from_collection_for_select(@list_functionaries, :cars, :name, :id, :full_car_name, @displacement.car_id) %>
      <%= form.select :car_id,   options, {}, {:class => "form-control"}  %>
     </div>
 

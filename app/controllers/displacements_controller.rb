@@ -112,7 +112,6 @@ class DisplacementsController < ApplicationController
     def lists_selects
       @list_addressess = Address.with_address(current_user)
       @list_functionaries = Functionary.with_functionary(current_user)
-      @list_cars = Car.with_car(current_user)
     end
    
 end
