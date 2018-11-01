@@ -105,13 +105,21 @@ class Displacement < ApplicationRecord
   end
 
   def km_update
+
     car = Car.find(self.car_id)
-    if car.km.nil?
+
+    if car.km.nil? || car.km.blank?
       car.km = 0
     end  
+
+    if self.kmEnd.nil? || self.kmEnd.blank?
+      self.kmEnd = 0
+    end
+
     if car.km < self.kmEnd
       car.update(km: self.kmEnd)
     end
+
   end
 
 end
