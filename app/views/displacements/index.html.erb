@@ -46,14 +46,13 @@
         <%= f.select(
           :with_functionary_id,
           @filterrific.select_options[:with_functionary_id],
-          {include_blank: '- Qualquer -'}, { :class => 'form-control' }
+          {include_blank: '- Qualquer -'}, { :class => 'form-control'}
         ) %>
       </div>
 
       <div class="col-md-4">
         <%= f.label "Opções"%><br />
         <%= link_to( t('buttons.reset_filter'), reset_filterrific_url, class:"btn btn-outline-primary") %>
-        <%= link_to( 'Exportar - CSV', displacements_path(format: :csv), {target: :_blank, class: "btn btn-outline-primary"} ) %>
       </div>
 
     </div>

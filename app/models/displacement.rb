@@ -61,6 +61,10 @@ class Displacement < ApplicationRecord
     .where("functionary_id = ? OR leader = ?", user.functionary, user.functionary)
   }
   
+  scope :with_displacement_csv, ->(functionary_id, dateStart, dateEnd) { 
+    where('functionary_id = ? AND dateDay BETWEEN ? and ?', functionary_id, dateStart, dateEnd)
+  }
+
   def self.options_for_sorted_by
     [
       ['Id', 'id_desc'],

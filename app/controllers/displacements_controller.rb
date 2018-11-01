@@ -8,8 +8,9 @@ class DisplacementsController < ApplicationController
   # GET /displacements
   # GET /displacements.json
   def index
+
     if  request.format == "csv"
-      @displacements_csv = Displacement.with_displacement(current_user).order(:dateDay, :startHour)
+      @displacements_csv =  Displacement.with_displacement_csv(params[:p1], params[:p2], params[:p3]).order(:dateDay, :startHour)
     end
     
     @filterrific = initialize_filterrific(
@@ -30,7 +31,6 @@ class DisplacementsController < ApplicationController
       ) or return
 
       @displacements = @filterrific.find.page(params[:page])
-
 
       rescue ActiveRecord::RecordNotFound => e
         # There is an issue with the persisted param_set. Reset it.
