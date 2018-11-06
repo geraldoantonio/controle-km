@@ -2,7 +2,7 @@
 
  <div class="row mt-3"> 
     <div class="col-md-12"> 
-      <label><i>Selecione o Funcionário, Data Início e Data Fim antes de exportar o arquivo)</i></labels><br /> 
+      <label><i>Selecione o Funcionário, Data Início e Data Fim antes de exportar o arquivo.</i></label><br /> 
       <%= link_to( 'CSV', displacements_path(format: :csv, p1: @filterrific.with_functionary_id, p2: @filterrific.with_dateDay_gte, p3: @filterrific.with_dateDay_lt), {class: "btn btn-sm btn-outline-primary" } ) %>
       <%= link_to( 'PDF', displacements_path(format: :csv, p1: @filterrific.with_functionary_id, p2: @filterrific.with_dateDay_gte, p3: @filterrific.with_dateDay_lt), {class: "btn btn-sm btn-outline-danger" } ) %>
     </div>
