@@ -42,7 +42,7 @@
           <td><%= displacement.osNumber %></td>
           <td><%= displacement.osProject %></td>
           <td><%= displacement.startHour.strftime("%H:%M") unless displacement.startHour.nil?  %></td>
-          <td><%= full_address(displacement.addressDst) %></td>  
+          <td><%= displacement.addressDst.description %></td>  
           <% if %w[leader].include? current_user.functionary.function %> 
             <td><%= displacement.functionary.name %></td>  
           <% end %>
