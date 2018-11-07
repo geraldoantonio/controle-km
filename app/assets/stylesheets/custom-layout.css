@@ -29,6 +29,9 @@ body{
   background-color: #e7e7e7;
 }
 
+.dropdown-item {
+  font-size: 0.8em!important;
+}
 
 .form-signin {
   width: 100%;

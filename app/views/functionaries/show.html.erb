@@ -61,16 +61,16 @@
   </table>
 </div>
 
-<div class="form-group d-print-none ">
+<div class="form-group  text-center d-print-none ">
 
   <% if can? :index, Functionary %>
-    <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-success" %>
+    <%= link_to t('buttons.back'), functionaries_path, class:"btn btn-sm btn-success" %>
   <% end %>
   <% if can? :edit, Functionary %>
-    <%= link_to t('buttons.edit'), edit_functionary_path(@functionary), class:"btn btn-primary" %>
+    <%= link_to t('buttons.edit'), edit_functionary_path(@functionary), class:"btn btn-sm btn-primary" %>
   <% end %>
   <% if can? :destroy, Functionary %>
-    <%= link_to t('buttons.delete'), functionary_path(@functionary), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Functionary.model_name.human}: #{@functionary.name} " )}, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), functionary_path(@functionary), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Functionary.model_name.human}: #{@functionary.name} " )}, class: "btn btn-sm btn-danger" %>
   <% end %>
 </div>
     

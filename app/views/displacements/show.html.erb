@@ -2,10 +2,10 @@
   
   <div class="row">
     <div class="col-md-8"> 
-    <div id="map"></div>
-    <div>  
-      <%= link_to "Ver no Google", "https://www.google.com/maps/dir/?api=1&origin=#{@displacement.addressSrc.geolocalization}&destination=#{@displacement.addressDst.geolocalization}", {target: "_blank", rel: "external"} %>
-    </div>
+      <div id="map"></div>
+      <div class="mb-4">  
+        <%= link_to "Ver no Google", "https://www.google.com/maps/dir/?api=1&origin=#{@displacement.addressSrc.geolocalization}&destination=#{@displacement.addressDst.geolocalization}", {class: "btn btn-sm btn-outline-secondary", target: "_blank", rel: "external"} %>
+      </div>
    </div> 
 
     <div class="col-md-4">      
@@ -70,15 +70,15 @@
   </div>
 
 
-<div class="form-group text-center ">
+<div class="form-group  text-center d-print-none ">
   <% if can? :index, Displacement %>
-    <%= link_to t('buttons.back'), displacements_path, class:"btn btn-success" %>
+    <%= link_to t('buttons.back'), displacements_path, class:"btn btn-sm btn-success" %>
  <% end %>
   <% if can? :update, Displacement %>
-    <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-primary" %>
+    <%= link_to t('buttons.edit'), edit_displacement_path(@displacement), class:"btn btn-sm btn-primary" %>
   <% end %>  
   <% if can? :destroy, Displacement %>
-    <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm:  I18n.t('messages.confirm_with',item: " #{Displacement.model_name.human}: #{@displacement.id} " )}, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), displacement_path(@displacement), method: :delete, data: { confirm:  I18n.t('messages.confirm_with',item: " #{Displacement.model_name.human}: #{@displacement.id} " )}, class: "btn btn-sm btn-danger" %>
   <% end %>
 </div>
 

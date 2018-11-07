@@ -52,17 +52,17 @@
   </div>
 </div>
 
-<div class="form-group text-center">
+<div class="form-group  text-center d-print-none ">
   <% if can? :index, Address %>
-    <%= link_to t('buttons.back'), addresses_path, class:"btn btn-success" %>
+    <%= link_to t('buttons.back'), addresses_path, class:"btn btn-sm btn-success" %>
   <% end %>
 
   <% if can? :update, Address %>
-    <%= link_to t('buttons.edit'), edit_address_path(@address), class:"btn btn-primary" %>
+    <%= link_to t('buttons.edit'), edit_address_path(@address), class:"btn btn-sm btn-primary" %>
   <% end %>
 
   <% if can? :destroy, Address %>
-    <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Address.model_name.human}: #{@address.description} " )}, class: "btn btn-danger" %>
+    <%= link_to t('buttons.delete'), address_path(@address), method: :delete, data: { confirm:   I18n.t('messages.confirm_with',item: " #{Address.model_name.human}: #{@address.description} " )}, class: "btn btn-sm btn-danger" %>
   <% end %>
 
 </div>
