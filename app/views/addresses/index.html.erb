@@ -2,7 +2,7 @@
 
 <% if can? :create, Address %>
   <%= link_to new_address_path do %>
-        <span class="pull-left"><i class="far fa-lg  fa-plus-square"></i> <%= t('buttons.new') << ' ' << Address.model_name.human
+    <span class="pull-left"><i class="far fa-lg  fa-plus-square"></i> <%= t('buttons.new') << ' ' << Address.model_name.human
   %> </span>
   <% end %>
 <% end %>

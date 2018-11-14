@@ -14,10 +14,11 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th sope="col"><%= filterrific_sorting_link(@filterrific, :dateDay) %></th>        
+        <th scope="col"><%= filterrific_sorting_link(@filterrific, :dateDay) %></th>        
         <th scope="col"><%= Displacement.human_attribute_name("osNumber") %></th>
         <th scope="col"><%= Displacement.human_attribute_name("osProject" )%></th>
         <th scope="col"><%= Displacement.human_attribute_name("startHour") %></th>
+        <th scope="col"><%= Displacement.human_attribute_name("kmEnd") %></th>
         <th scope="col"><%= Displacement.human_attribute_name("addressDst") %></th>
         <% if %w[leader].include? current_user.functionary.function %>
           <th scope="col"><%= Displacement.human_attribute_name("functionary_id") %></th>
@@ -25,7 +26,7 @@
       </tr>
     </thead>
  
-    <!-- Link line table  -->
+    <!-- Reload Link line table  -->
     <%= javascript_tag '    
       jQuery(document).ready(function($) {
           $(".clickable-row").click(function() {
@@ -42,10 +43,11 @@
           <td><%= displacement.osNumber %></td>
           <td><%= displacement.osProject %></td>
           <td><%= displacement.startHour.strftime("%H:%M") unless displacement.startHour.nil?  %></td>
-          <td><%= displacement.addressDst.description %></td>  
+          <td><%= displacement.kmEnd %></td>  
+          <td ><%= displacement.addressDst.description %></td> 
           <% if %w[leader].include? current_user.functionary.function %> 
             <td><%= displacement.functionary.name %></td>  
-          <% end %>
+          <% end %>         
         </tr>      
       <% end %>
     </tbody>
@@ -57,4 +59,4 @@
     </div>
   </div>
 
-</div>
+</div>  

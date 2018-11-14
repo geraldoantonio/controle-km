@@ -20,7 +20,7 @@
       </div>
       
       <div class="col-md-3">
-        <%= f.label "Projeto" %>
+        <%= f.label Displacement.human_attribute_name("osProject") %>
         <%= f.select(
           :with_project,
           @filterrific.select_options[:with_project],
@@ -42,7 +42,7 @@
 
     <div class="row">  
       <div class="col-md-6">
-        <%= f.label "Funcionário" %>
+        <%= f.label Displacement.human_attribute_name("functionary_id") %>
         <%= f.select(
           :with_functionary_id,
           @filterrific.select_options[:with_functionary_id],

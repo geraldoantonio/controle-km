@@ -17,7 +17,9 @@
         <th scope="col"><%= Car.human_attribute_name("mark")%></th>
         <th scope="col"><%= Car.human_attribute_name("modelType")%></th>
         <th scope="col"><%= Car.human_attribute_name("km")%></th>
-        <th scope="col"><%= Functionary.human_attribute_name("name")%></th>
+        <% if %w[leader].include? current_user.functionary.function %> 
+          <th scope="col"><%= Functionary.human_attribute_name("name")%></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +30,9 @@
           <td><%= car.mark %></td>
           <td><%= car.modelType %></td>
           <td><%= car.km %></td>
-          <td><%= car.functionary.name %></td>
+          <% if %w[leader].include? current_user.functionary.function %> 
+            <td><%= car.functionary.name %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
