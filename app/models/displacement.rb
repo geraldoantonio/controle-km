@@ -91,7 +91,7 @@ class Displacement < ApplicationRecord
   end
   
   def set_km_count
-    unless kmEnd.blank? || kmEnd.nil? || kmStart.blank? || kmEnd.nil?
+    unless kmEnd.blank? || kmEnd.nil? || kmStart.blank? || kmStart.nil?
       unless km_end_less?
         self.kmCount = kmEnd - kmStart
       end
