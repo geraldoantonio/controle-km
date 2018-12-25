@@ -56,6 +56,8 @@ gem 'jquery-ui-rails'
 #Ruby probressbar in terminal for long running jobs
 gem 'rake-progressbar'
 
+# Progressive Web App
+gem "serviceworker-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

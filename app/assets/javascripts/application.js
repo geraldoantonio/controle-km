@@ -22,4 +22,4 @@ jQuery(document).ready(function($) {
           window.location = $(this).data("href");
       });
   });
-   
+   //= require serviceworker-companion

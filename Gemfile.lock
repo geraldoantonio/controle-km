@@ -231,6 +231,8 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    serviceworker-rails (0.5.5)
+      railties (>= 3.1)
     sinatra (2.0.4)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   rake-progressbar
   sass-rails (~> 5.0)
   selenium-webdriver
+  serviceworker-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

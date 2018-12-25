@@ -14,4 +14,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 
-Rails.application.config.assets.precompile += %w( filterrific/filterrific-spinner.gif )
+Rails.application.config.assets.precompile += %w( filterrific/filterrific-spinner.gif )Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
