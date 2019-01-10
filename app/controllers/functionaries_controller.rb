@@ -10,6 +10,7 @@ class FunctionariesController < ApplicationController
   # GET /functionaries.json
   def index
     @functionaries = Functionary.with_functionary(current_user).page params[:page]
+   
   end
 
   # GET /functionaries/1

@@ -8,7 +8,7 @@ class Displacement < ApplicationRecord
             :osProject, :startHour, :addressSrc_id,
             :addressDst_id, :kmStart, presence: true
   
-  validate :km_end_start, :addressEqual  
+  validate :km_end_start, :addressEqual , :hour_end_start 
   before_save :set_km_count, :set_velocity_medium
   after_save :km_update
   enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL, :BAHIAGÁS, :UFBA, :IRDEB  ]
@@ -89,12 +89,27 @@ class Displacement < ApplicationRecord
       kmEnd < kmStart
     end
   end
+
+  def hour_end_start    
+    if hour_end_less?      
+      errors.add(:base, "Hora chegada não é maior que a hora de partida!")
+    end    
+  end
+
+  def hour_end_less?
+    unless endHour.blank? || endHour.nil?
+      endHour <= startHour
+    end
+  end
   
   def set_km_count
     unless kmEnd.blank? || kmEnd.nil? || kmStart.blank? || kmStart.nil?
       unless km_end_less?
         self.kmCount = kmEnd - kmStart
       end
+    else
+      self.kmCount = nil
+      self.velocity = nil
     end
   end 
 

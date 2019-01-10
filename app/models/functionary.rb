@@ -11,7 +11,10 @@ class Functionary < ApplicationRecord
 
   enum function: [ :leader, :tecnical ]
 
-  scope :with_functionary, ->(user){where("id = ? OR leader = ?", user.functionary, user.functionary).order(:name)}
+  scope :with_functionary, ->(current_user){
+    where("id = ? OR leader = ?", current_user, current_user)
+    .order(:name)
+  }
   
   def self.options_for_select
     order('LOWER(name)').map { |e| [e.name, e.id] }

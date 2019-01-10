@@ -11,5 +11,10 @@ class Address < ApplicationRecord
     :SE, :SP, :TO
    ]
     
-  scope :with_address, ->(user){includes(:functionary).joins("INNER JOIN functionaries ON functionaries.id = addresses.functionary_id").where("functionary_id = ? OR leader = ?", user.functionary, user.functionary).order(:description)}
+  scope :with_address, ->(current_user){
+    includes(:functionary)
+    .left_joins(:functionary)
+    .where("functionary_id = ? OR leader = ?", current_user, current_user)
+    .order('functionaries.name', :description)
+  }
 end
