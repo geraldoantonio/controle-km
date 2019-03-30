@@ -48,14 +48,21 @@
     
     <div class="form-group col-xs-12 col-sm-12 col-md-2">
       <%= form.label :kmStart %>
-      <%= form.number_field :kmStart, :class => "form-control" %>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <span onclick="getLastKm()"><i class="fas fa-route"></i></span>
+          </div>
+        </div>
+        <%= form.number_field :kmStart, :class => "form-control" %>
+      </div>
     </div>
-    
-  <div class="form-group col-xs-12 col-sm-12 col-md-8">
-    <%= form.label :addressSrc_id %>    
-    <% options = options_from_collection_for_select(@list_addressess, 'id', 'description', @displacement.addressSrc_id) %>
-    <%= form.select :addressSrc_id,   options, {}, {:class => "form-control"}  %>
-  </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-8">
+      <%= form.label :addressSrc_id %>    
+      <% options = options_from_collection_for_select(@list_addressess, 'id', 'description', @displacement.addressSrc_id) %>
+      <%= form.select :addressSrc_id,   options, {}, {:class => "form-control"}  %>
+    </div>
   </div>
   <div class="form-row">
 
