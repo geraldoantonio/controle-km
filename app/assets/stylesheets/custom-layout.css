@@ -27,16 +27,6 @@ body {
   padding-top: 20px;
 }
 
-.nav-link {
-  color: #333 !important;
-}
-
-.navbar-right>li {
-  display: inline-block;
-  padding-left: 2em;
-}
-
-.nav-menu,
 .footer {
   background-color: #e7e7e7;
 }
@@ -86,4 +76,69 @@ body {
   width: 100%;
   min-height: 300px;
   margin-bottom: 20px;
+}
+
+.navbar 
+{
+  background-color: #fff; 
+  border-bottom: 1px solid #007bff;
+}
+
+a.nav-link
+{
+  color: #d2d6de;
+  font-size: 1.3em;
+}
+
+a.nav-link a:hover
+{
+  color: #007bff;
+}
+
+li.nav-item .active {
+  color: #007bff!import;
+}
+
+#navbarCollapse li a:hover 
+{
+}
+
+.navbar-right li a
+{
+  padding: 7px;
+}
+
+
+
+@media (max-width: 768px)
+{
+
+  a.nav-link
+  {
+    color: #333;
+  }
+  #navbarCollapse li a
+  {
+    border-bottom: 1px solid #d2d6de;
+  }
+  #navbarCollapse li a:hover
+  {
+    background-color: #007bff;
+    color: #FFF;
+  }
+  .navbar-toggler{
+    color: #007bff;
+  }
+  .skm-btn
+  {
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+  }
+  a.skm-btn:hover
+  {
+    text-decoration: none;
+  }
 }
