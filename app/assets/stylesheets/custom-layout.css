@@ -96,7 +96,7 @@ a.nav-link a:hover
 }
 
 li.nav-item .active {
-  color: #007bff!import;
+  color: #007bff!important;
 }
 
 #navbarCollapse li a:hover 
