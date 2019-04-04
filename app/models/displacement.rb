@@ -11,7 +11,7 @@ class Displacement < ApplicationRecord
   validate :km_end_start, :addressEqual , :hour_end_start 
   before_save :set_km_count, :set_velocity_medium
   after_save :km_update
-  enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL, :BAHIAGÁS, :UFBA, :IRDEB  ]
+  enum osProject: [ :SOLUTIS, :SEFAZ, :SEC, :TJBA, :EBAL, :BAHIAGÁS, :UFBA, :IRDEB, :MP  ]
   
   filterrific(
    default_filter_params: { sorted_by: 'dateDay_desc' },

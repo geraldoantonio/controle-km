@@ -129,16 +129,4 @@ li.nav-item .active {
   .navbar-toggler{
     color: #007bff;
   }
-  .skm-btn
-  {
-    display: inline-block;
-    font-size: 1.5em;
-    padding: 10px 20px;
-    text-align: center;
-    width: 100%;
-  }
-  a.skm-btn:hover
-  {
-    text-decoration: none;
-  }
 }

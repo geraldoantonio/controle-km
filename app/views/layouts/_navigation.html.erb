@@ -14,25 +14,31 @@
 
           <% if can? :index, Displacement %>
             <li class="nav-item">
-              <%= link_to "Rotas", displacements_path, :class => "nav-link " %>
+              <%= link_to "Rotas", displacements_path, :class => "nav-link" << active_menu?('displacements')   %>
             </li>
           <% end %>
 
           <% if can? :index, Address %>
             <li class="nav-item">
-              <%= link_to "Endereços", addresses_path, :class => "nav-link" %>
+              <%= link_to "Endereços", addresses_path, :class => "nav-link" << active_menu?('addresses') %>
             </li>
           <% end %>
 
           <% if can? :index, Car %>
             <li class="nav-item">
-              <%= link_to "Carros", cars_path, :class => "nav-link" %>
+              <%= link_to "Carros", cars_path, :class => "nav-link" << active_menu?('cars') %>
             </li>
           <% end %>
 
           <% if can? :index, Functionary %>
             <li class="nav-item">
-              <%= link_to "Funcionários", functionaries_path, :class => "nav-link" %>
+              <%= link_to "Funcionários", functionaries_path, :class => "nav-link" << active_menu?('functionaries')  %>
+            </li>
+          <% end %>
+
+          <% if can? :index, Functionary %>
+            <li class="nav-item">
+              <%= link_to "Despesas", '#', :class => "nav-link" %>
             </li>
           <% end %>
 

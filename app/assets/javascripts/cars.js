@@ -11,7 +11,7 @@ function getLastKm(){
       dataType:"json",
       success:function(result){
         $("#displacement_kmStart").val(result.km); 
-        $("#displacement_kmEnd").attr('min', result.km).val(0);
+        $("#displacement_kmEnd").attr('min', result.km).val('');
       }
     })
   }
