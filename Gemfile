@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -52,6 +52,8 @@ gem 'jquery-rails'
 # jQuery UI for the Rails asset pipeline
 gem 'jquery-ui-rails'
 #
+#Postgres Database
+gem 'pg', '~> 0.18.4'
 
 #Ruby probressbar in terminal for long running jobs
 gem 'rake-progressbar'
@@ -62,8 +64,6 @@ gem "serviceworker-rails"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 end
 
 group :development do
@@ -95,7 +95,6 @@ end
 
 group :production do
   #Postgres database
-  gem 'pg', '~> 0.18.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

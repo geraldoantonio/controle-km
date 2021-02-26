@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_10_30_234019) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string "description"
     t.string "cep"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_234019) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "geolocalization"
-    t.integer "functionary_id"
+    t.bigint "functionary_id"
     t.index ["functionary_id"], name: "index_addresses_on_functionary_id"
   end
 
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_234019) do
     t.string "plate"
     t.string "mark"
     t.string "modelType"
-    t.integer "functionary_id"
+    t.bigint "functionary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "km", default: 0
@@ -37,15 +40,15 @@ ActiveRecord::Schema.define(version: 2018_10_30_234019) do
   end
 
   create_table "displacements", force: :cascade do |t|
-    t.integer "car_id"
-    t.integer "functionary_id"
+    t.bigint "car_id"
+    t.bigint "functionary_id"
     t.date "dateDay"
     t.integer "osNumber"
     t.integer "osProject"
     t.time "startHour"
     t.time "endHour"
-    t.integer "addressSrc_id"
-    t.integer "addressDst_id"
+    t.bigint "addressSrc_id"
+    t.bigint "addressDst_id"
     t.integer "kmStart"
     t.integer "kmEnd"
     t.integer "kmCount"
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_234019) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "leader"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_functionaries_on_user_id"
   end
 
@@ -92,4 +95,11 @@ ActiveRecord::Schema.define(version: 2018_10_30_234019) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "functionaries"
+  add_foreign_key "cars", "functionaries"
+  add_foreign_key "displacements", "addresses", column: "addressDst_id"
+  add_foreign_key "displacements", "addresses", column: "addressSrc_id"
+  add_foreign_key "displacements", "cars"
+  add_foreign_key "displacements", "functionaries"
+  add_foreign_key "functionaries", "users"
 end
